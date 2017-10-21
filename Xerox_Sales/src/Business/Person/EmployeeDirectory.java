@@ -40,4 +40,20 @@ public class EmployeeDirectory {
     {
         personList.remove(person);
     }
+    
+    public Person isValid(String userId,String pwd){
+         
+         for(Person person:personList)
+         {
+             
+             if(person.getUserName().equals(userId)&&person.getPassword().equals(pwd))
+             {
+                
+                return person;
+                 
+             }
+                
+         }
+        return null;     
+     }
 }

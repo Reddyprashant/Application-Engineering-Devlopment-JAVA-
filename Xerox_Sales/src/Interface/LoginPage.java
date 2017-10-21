@@ -12,7 +12,7 @@ import java.awt.CardLayout;
 import javax.security.auth.login.Configuration;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
-
+import Business.Person.*;
 
 import java.util.IllegalFormatException;
 
@@ -27,7 +27,7 @@ public class LoginPage extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    
+    private Business business;
     
     
 
@@ -91,7 +91,7 @@ public class LoginPage extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Role:");
 
-        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Sales Person" }));
+        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "System Admin", "Sales Person" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

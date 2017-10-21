@@ -81,15 +81,17 @@ public class ConfigureBusiness {
 
         Person person = ed.addPerson();
         person.setName("Virat");
-        person.setRole("Admin");
+        person.setRole("System Admin");
         person.setUserName("a123");
         person.setPassword("a123");
+        person.setStatus(Boolean.TRUE);
 
         Person person1 = ed.addPerson();
         person1.setName("ABD");
         person1.setRole("Sales person");
         person1.setPassword("s123");
         person1.setUserName("sales");
+        person.setStatus(Boolean.TRUE);
 
         MarketList ml = business.getMarketList();
         Market market = ml.addMarket();

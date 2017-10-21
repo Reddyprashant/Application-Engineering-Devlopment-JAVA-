@@ -20,6 +20,7 @@ public class Person {
     private String password;
     private String role;
     private ArrayList<Order> orderList;
+    private boolean status;
 
     public static int getCount() {
         return count;
@@ -81,6 +82,16 @@ public class Person {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
         @Override
     public String toString()
     {
