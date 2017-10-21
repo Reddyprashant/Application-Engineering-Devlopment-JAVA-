@@ -15,6 +15,7 @@ public class OrderItem {
     private MarketOffer marketOffer;
     private int quantity;
     private int paidPrice;
+    int a;
 
     public MarketOffer getMarketOffer() {
         return marketOffer;
