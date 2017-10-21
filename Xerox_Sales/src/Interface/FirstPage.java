@@ -15,7 +15,7 @@ public class FirstPage extends javax.swing.JFrame {
      */
     
     
-    
+    private Business business;
     private FirstPage(){
     initComponents();
     business= ConfigureBusiness.Initialize();
