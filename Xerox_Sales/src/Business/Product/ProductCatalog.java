@@ -40,4 +40,13 @@ public class ProductCatalog {
     {
         productList.remove(product);
     }
+    public Product searchProduct(String id) {
+        //ArrayList<Product> result = new ArrayList<Product>();
+        for(Product p : productList) {
+            if(p.getProductId()== id) {
+                return p;
+            }
+        }
+        return null;
+    }
 }

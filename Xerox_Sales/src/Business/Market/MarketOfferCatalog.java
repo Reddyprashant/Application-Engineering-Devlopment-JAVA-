@@ -5,6 +5,7 @@
  */
 package Business.Market;
 
+import Business.Person.Person;
 import java.util.ArrayList;
 
 /**
@@ -25,5 +26,12 @@ public class MarketOfferCatalog {
 
     public void setMarketOfferList(ArrayList<MarketOffer> marketOfferList) {
         this.marketOfferList = marketOfferList;
+    }
+    
+    public MarketOffer addMarketOffer()
+    {
+        MarketOffer marketOffer = new MarketOffer();
+        marketOfferList.add(marketOffer);
+        return marketOffer;
     }
 }

@@ -5,6 +5,7 @@
  */
 package Business.Market;
 
+import Business.Customer;
 import Business.Person.Person;
 import java.util.ArrayList;
 
@@ -16,11 +17,32 @@ public class Market {
     private String marketName;
     private String marketId;
     private static int count =0;
-    private ArrayList<Person> personList;
+    private ArrayList<Customer> customerList;
     
     public Market()
     {
         this.marketId ="MKT"+ ++count;
-        personList = new ArrayList<Person>();
+        customerList = new ArrayList<Customer>();
+    }
+        @Override
+    public String toString()
+    {
+        return this.marketId;
+    }
+
+    public String getMarketName() {
+        return marketName;
+    }
+
+    public void setMarketName(String marketName) {
+        this.marketName = marketName;
+    }
+
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
     }
 }

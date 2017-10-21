@@ -7,6 +7,8 @@ package Business;
 
 import Business.Market.MarketList;
 import Business.Market.MarketOffer;
+import Business.Market.MarketOfferCatalog;
+import Business.Order.OrderList;
 import Business.Person.EmployeeDirectory;
 import Business.Supplier.SupplierDirectory;
 
@@ -17,8 +19,17 @@ import Business.Supplier.SupplierDirectory;
 public class Business {
     private SupplierDirectory supplierDirectory;
     private MarketList marketList;
-    private MarketOffer marketOffer;
+    private MarketOfferCatalog marketOfferCatalog;
     private EmployeeDirectory employeeDirectory;
+    private OrderList orderList;
+
+    public OrderList getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(OrderList orderList) {
+        this.orderList = orderList;
+    }
     
 
     public SupplierDirectory getSupplierDirectory() {
@@ -37,12 +48,12 @@ public class Business {
         this.marketList = marketList;
     }
 
-    public MarketOffer getMarketOffer() {
-        return marketOffer;
+    public MarketOfferCatalog getMarketOfferCatalog() {
+        return marketOfferCatalog;
     }
 
-    public void setMarketOffer(MarketOffer marketOffer) {
-        this.marketOffer = marketOffer;
+    public void setMarketOfferCatalog(MarketOfferCatalog marketOfferCatalog) {
+        this.marketOfferCatalog = marketOfferCatalog;
     }
 
     public EmployeeDirectory getEmployeeDirectory() {

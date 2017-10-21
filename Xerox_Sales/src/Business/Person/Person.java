@@ -5,6 +5,9 @@
  */
 package Business.Person;
 
+import Business.Order.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author prashantreddy
@@ -16,11 +19,28 @@ public class Person {
     private String userName;
     private String password;
     private String role;
+    private ArrayList<Order> orderList;
 
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Person.count = count;
+    }
+
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<Order> orderList) {
+        this.orderList = orderList;
+    }
     
     public Person()
     {
         empId = "Emp"+ ++count;
+        orderList = new ArrayList<Order>();
     }
 
     public String getName() {
@@ -60,5 +80,10 @@ public class Person {
 
     public void setRole(String role) {
         this.role = role;
+    }
+        @Override
+    public String toString()
+    {
+        return this.empId;
     }
 }

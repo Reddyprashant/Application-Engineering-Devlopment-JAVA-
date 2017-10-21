@@ -19,13 +19,29 @@ public class Order {
     private String orderId;
     private static int count=0;
     private String status;
-    private Date shippingDate;
-    private Date deliveryDate;
-    private Date issueDate;
+    private Date orderDate;
+    private Date expectedDeliveryDate;
+    //private Date issueDate;
     private Person person;
     private Customer customer;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
     
-    private Order()
+    public Order()
     {
         orderId = "ord"+ ++count;
         orderItemList = new ArrayList<OrderItem>();
@@ -55,27 +71,28 @@ public class Order {
         this.status = status;
     }
 
-    public Date getShippingDate() {
-        return shippingDate;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setShippingDate(Date shippingDate) {
-        this.shippingDate = shippingDate;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public Date getExpectedDeliveryDate() {
+        return expectedDeliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public void setExpectedDeliveryDate(Date expectedDeliveryDate) {
+        this.expectedDeliveryDate = expectedDeliveryDate;
     }
 
-    public Date getIssueDate() {
-        return issueDate;
+    public OrderItem addOrderItem()
+    {
+        OrderItem orderItem= new OrderItem();
+        orderItemList.add(orderItem);
+        return orderItem;
+                
     }
-
-    public void setIssueDate(Date issueDate) {
-        this.issueDate = issueDate;
-    }
+    
 }
