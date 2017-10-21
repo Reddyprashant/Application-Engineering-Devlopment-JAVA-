@@ -142,7 +142,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel1)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(1784, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
                     .addComponent(viewjButton2))
                 .addGap(18, 18, 18)
                 .addComponent(addsupplierjButton3)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(1008, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
