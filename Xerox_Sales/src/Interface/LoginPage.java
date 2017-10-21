@@ -31,7 +31,7 @@ public class LoginPage extends javax.swing.JPanel {
         private Business business;
    // private JPanel userProcessContainer;
     private JPanel userProcessContainer;
-    private Business business;
+   // private Business business;
     
     
 
@@ -152,24 +152,24 @@ public class LoginPage extends javax.swing.JPanel {
         
         if(person!=null)
         {
-//            if(person.getRole().equalsIgnoreCase("Admin"))
-//        {
-//                    AdminPage adminPage = new AdminPage(userProcessContainer, business,userAccount);
-//        userProcessContainer.add("AdminPage",adminPage);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-//                
-//            
-//        }
-//            else if(person.getRole().equalsIgnoreCase("Sales person"))
-//        {
-//                    AdminPage adminPage = new AdminPage(userProcessContainer, business,userAccount);
-//        userProcessContainer.add("AdminPage",adminPage);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-//                
-//            
-//        }
+            if(person.getRole().equalsIgnoreCase("Admin"))
+        {
+                    SystemAdminWorkAreaJPanel adminPage = new SystemAdminWorkAreaJPanel(userProcessContainer, business, person);
+        userProcessContainer.add("AdminPage",adminPage);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+                
+            
+        }
+            else if(person.getRole().equalsIgnoreCase("Sales person"))
+        {
+                    ManageCustomersJPanel adminPage = new ManageCustomersJPanel(userProcessContainer, business,person);
+        userProcessContainer.add("AdminPage",adminPage);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+                
+            
+        }
         }
         else if(supplier!=null)
         {
