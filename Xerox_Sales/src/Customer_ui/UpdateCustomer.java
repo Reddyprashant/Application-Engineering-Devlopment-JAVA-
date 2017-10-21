@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Market_ui;
+package Customer_ui;
 
+import Market_ui.*;
 import Supplier_ui.*;
 import Person_ui.*;
 import Business.Business;
@@ -20,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author raj
  */
-public class UpdateMarket extends javax.swing.JPanel {
+public class UpdateCustomer extends javax.swing.JPanel {
 
     /**
      * Creates new form CreatePerson
@@ -28,21 +29,21 @@ public class UpdateMarket extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Business business;
     private Market res;
-    private MarketJPanelForm mjp;
+    private CustomerJPanelForm mjp;
     
 
     
 
     
 
-    UpdateMarket(JPanel userProcessContainer, Business business, Market res) {
+    UpdateCustomer(JPanel userProcessContainer, Business business, Market res) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.res=res;
         
         nameTextField.setText(String.valueOf(res.getMarketName()));
-        //marketIdTextField.setText(String.valueOf(res.getMarketId()));
+        marketIdTextField.setText(String.valueOf(res.getMarketId()));
         
        
         
@@ -88,9 +89,6 @@ public class UpdateMarket extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name:");
-
-        marketIdTextField.setEditable(false);
-        marketIdTextField.setEnabled(false);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +157,7 @@ public class UpdateMarket extends javax.swing.JPanel {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
       res.setMarketName(nameTextField.getText());
-      //res.setMarketId(marketIdTextField.getText());
+      res.setMarketId(marketIdTextField.getText());
       
       
         
@@ -171,7 +169,7 @@ public class UpdateMarket extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         Component[] componentArray=userProcessContainer.getComponents();
-        mjp =(MarketJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
+        mjp =(CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
         mjp.populateMarketTable();
     }//GEN-LAST:event_backButtonActionPerformed
 

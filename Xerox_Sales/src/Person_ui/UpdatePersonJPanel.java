@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import Business.Person.*;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 /**
  *
@@ -37,13 +38,25 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
         personIdTextField.setText(String.valueOf(res.getEmpId()));
         usernameTextField.setText(String.valueOf(res.getUserName()));
         passwordTextField.setText(String.valueOf(res.getPassword()));
-        roleTextField.setText(String.valueOf(res.getRole()));
-        
+       roleDropDown.setSelectedItem(res.getRole());
+//        for(Person person : business.getPersonDirectory().getPersonList()) {
+//           prsnComboBox.addItem(person);
+//           //roleComboBox.addItem(userAccount1.getRole());
+//       }
+//       prsnComboBox.setSelectedItem(userAccount.getPerson());
+       HashSet<String> set=new HashSet<String>(); 
+             for(Person person : business.getEmployeeDirectory().getPersonList()) {
+              set.add(person.getRole());
+           
+       }
+        for (String string : set) {
+            roleDropDown.addItem(string);
+        }
         nameTextField.setEnabled(false);
         personIdTextField.setEnabled(false);
         usernameTextField.setEnabled(false);
         passwordTextField.setEnabled(false);
-        roleTextField.setEnabled(false);
+        roleDropDown.setEnabled(false);
         
     }
 
@@ -68,14 +81,14 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         personIdTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
-        roleTextField = new javax.swing.JTextField();
         enableButton = new javax.swing.JButton();
+        roleDropDown = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Person ID:");
+        jLabel7.setText("EMP ID:");
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +116,9 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name:");
+
+        personIdTextField.setEditable(false);
+        personIdTextField.setEnabled(false);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +167,7 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                                         .addComponent(passwordTextField)
-                                        .addComponent(roleTextField))))))
+                                        .addComponent(roleDropDown, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backButton)))
@@ -179,14 +195,14 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel9)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
-                    .addComponent(roleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(roleDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton)
                     .addComponent(enableButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
         );
@@ -197,7 +213,13 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
       res.setEmpId(personIdTextField.getText());
       res.setUserName(usernameTextField.getText());
       res.setPassword(passwordTextField.getText());
-      res.setRole(roleTextField.getText());
+       String role = (String)roleDropDown.getSelectedItem();
+       
+      if(res.getRole()!=role)
+                {
+                    res.setRole(role);
+                }
+     //String role= roleDropDown.setSelectedItem();
         
       JOptionPane.showMessageDialog(updateButton,"Updated succesfully");
     }//GEN-LAST:event_updateButtonActionPerformed
@@ -216,7 +238,8 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
         personIdTextField.setEnabled(true);
         usernameTextField.setEnabled(true);
         passwordTextField.setEnabled(true);
-        roleTextField.setEnabled(true);
+//        roleTextField.setEnabled(true);
+roleDropDown.setEnabled(true);
     }//GEN-LAST:event_enableButtonActionPerformed
 
 
@@ -232,7 +255,7 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameTextField;
     private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JTextField personIdTextField;
-    private javax.swing.JTextField roleTextField;
+    private javax.swing.JComboBox<String> roleDropDown;
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables

@@ -40,7 +40,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         for (Market mar:business.getMarketList().getMarketList()){ 
                     Object row[] = new Object[4];
                     row[0] = mar;
-                    row[1] = mar.getMarketName();
+                    row[1] = mar.getMarketId();
                     
                     
                     
@@ -63,6 +63,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         deleteSupplier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         marketTable = new javax.swing.JTable();
+        backBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -72,21 +73,21 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Supplier");
 
-        addSupplierButton.setText("Add Supplier");
+        addSupplierButton.setText("Add Market");
         addSupplierButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSupplierButtonActionPerformed(evt);
             }
         });
 
-        updateSupplier.setText("Update Supplier");
+        updateSupplier.setText("Update Market");
         updateSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateSupplierActionPerformed(evt);
             }
         });
 
-        deleteSupplier.setText("Delete Supplier");
+        deleteSupplier.setText("Delete Market");
         deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteSupplierActionPerformed(evt);
@@ -98,10 +99,25 @@ public class MarketJPanelForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Market Id", "Market Name"
+                "Market Name", "Market Id"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(marketTable);
+
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,10 +131,13 @@ public class MarketJPanelForm extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addSupplierButton)
                             .addComponent(updateSupplier)
-                            .addComponent(deleteSupplier))
+                            .addComponent(deleteSupplier)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(backBtn)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,13 +147,17 @@ public class MarketJPanelForm extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(addSupplierButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(updateSupplier)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteSupplier))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4))
+                        .addComponent(deleteSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                        .addComponent(backBtn)
+                        .addGap(18, 18, 18))))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -176,9 +199,17 @@ public class MarketJPanelForm extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(updateSupplier,"Please select a row first");
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+               userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupplierButton;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton deleteSupplier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

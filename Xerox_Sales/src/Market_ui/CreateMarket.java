@@ -28,7 +28,7 @@ public class CreateMarket extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Business business;
     private MarketJPanelForm mjp;
-            
+    //private Business business;
     public CreateMarket(JPanel userProcessContainer,Business business) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
@@ -101,7 +101,7 @@ public class CreateMarket extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backButton)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +118,7 @@ public class CreateMarket extends javax.swing.JPanel {
                     .addComponent(marketIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
         );
@@ -133,7 +133,6 @@ public class CreateMarket extends javax.swing.JPanel {
         
         
         m.setMarketName(name);
-        m.setMarketId(marketId);
        
         
         

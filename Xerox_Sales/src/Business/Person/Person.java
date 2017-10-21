@@ -6,6 +6,7 @@
 package Business.Person;
 
 import Business.Order.Order;
+import Utility.Validations;
 import java.util.ArrayList;
 
 /**
@@ -73,7 +74,7 @@ public class Person {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Validations.generateHash(password)  ;
     }
 
     public String getRole() {

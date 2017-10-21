@@ -5,6 +5,7 @@
  */
 package Interface;
 import Business.Business;
+import Business.Person.Person;
 import Market_ui.*;
 import Person_ui.*;
 import Supplier_ui.*;
@@ -22,10 +23,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Business business;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,Business business) {
+    private Person person;
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,Business business, Person person) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
+        this.person = person;
     }
 
     /**
@@ -42,6 +45,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         managePerson = new javax.swing.JButton();
         manageSupplier = new javax.swing.JButton();
         manageMarket = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -72,6 +76,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Customer");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -82,8 +88,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(managePerson)
                     .addComponent(manageSupplier)
-                    .addComponent(manageMarket))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(manageMarket, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +104,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageSupplier)
                 .addGap(18, 18, 18)
                 .addComponent(manageMarket)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -125,6 +135,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton manageMarket;

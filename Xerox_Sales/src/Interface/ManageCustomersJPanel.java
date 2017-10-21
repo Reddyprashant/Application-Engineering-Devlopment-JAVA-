@@ -6,6 +6,7 @@
 package Interface;
 
 import Business.Business;
+import Business.Person.Person;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -23,12 +24,14 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Business business;
-    
+    private Person person;
     
 
-    ManageCustomersJPanel(JPanel userProcessContainer) {
+    ManageCustomersJPanel(JPanel userProcessContainer, Business business, Person person) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.person=  person;
+        this.business= business;
        
     }
 

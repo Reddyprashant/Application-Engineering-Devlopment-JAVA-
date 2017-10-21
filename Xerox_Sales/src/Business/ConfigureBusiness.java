@@ -90,7 +90,7 @@ public class ConfigureBusiness {
         Person person = ed.addPerson();
         person.setName("Virat");
         person.setRole("Admin");
-        person.setUserName("a123");
+        person.setUserName("admin");
         person.setPassword("a123");
 
         Person person1 = ed.addPerson();

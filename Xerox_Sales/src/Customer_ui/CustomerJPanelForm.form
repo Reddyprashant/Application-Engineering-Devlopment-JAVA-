@@ -40,16 +40,12 @@
                               <Component id="addSupplierButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="updateSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="deleteSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="505" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace pref="72" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,21 +56,16 @@
                   <Component id="jLabel1" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="addSupplierButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="updateSupplier" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="deleteSupplier" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="289" max="32767" attributes="0"/>
-                          <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -93,7 +84,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="addSupplierButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Market"/>
+            <Property name="text" type="java.lang.String" value="Add Supplier"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSupplierButtonActionPerformed"/>
@@ -101,7 +92,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="updateSupplier">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Update Market"/>
+            <Property name="text" type="java.lang.String" value="Update Supplier"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateSupplierActionPerformed"/>
@@ -109,7 +100,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="deleteSupplier">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Delete Market"/>
+            <Property name="text" type="java.lang.String" value="Delete Supplier"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSupplierActionPerformed"/>
@@ -126,8 +117,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
-                    <Column editable="false" title="Market Name" type="java.lang.Object"/>
-                    <Column editable="false" title="Market Id" type="java.lang.Object"/>
+                    <Column editable="true" title="Market Id" type="java.lang.Object"/>
+                    <Column editable="true" title="Market Name" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -151,14 +142,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="backBtn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Back"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

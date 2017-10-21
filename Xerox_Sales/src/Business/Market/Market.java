@@ -7,6 +7,7 @@ package Business.Market;
 
 import Business.Customer;
 import Business.Person.Person;
+import Business.Supplier.Supplier;
 import java.util.ArrayList;
 
 /**
@@ -50,4 +51,22 @@ public class Market {
     {
         return this.marketName;
     }
+
+    public String getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Market.count = count;
+    }
+    
+   
 }
