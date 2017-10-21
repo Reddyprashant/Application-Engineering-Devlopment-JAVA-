@@ -31,7 +31,7 @@ public class LoginPage extends javax.swing.JPanel {
         private Business business;
    // private JPanel userProcessContainer;
     private JPanel userProcessContainer;
-    private Business business;
+    
     
     
 
