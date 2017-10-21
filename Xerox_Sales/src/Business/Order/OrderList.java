@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class OrderList {
     private ArrayList<Order> orderList;
     
-    private OrderList()
+    public OrderList()
     {
         orderList = new ArrayList<Order>();
     }

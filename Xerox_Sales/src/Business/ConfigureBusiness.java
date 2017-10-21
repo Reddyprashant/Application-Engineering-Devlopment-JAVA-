@@ -37,18 +37,22 @@ public class ConfigureBusiness {
         s.setSupplierName("Dell");
         s.setUserName("s123");
         s.setPassword("s123");
+        
 
         Product p= s.getProductCatalog().addProduct();
         p.setProductName("Laptop");
         p.setPrice(1000);
+        p.setAvailability(77);
         
          Product p1= s.getProductCatalog().addProduct();
         p1.setProductName("Printer");
         p1.setPrice(800);
+        p1.setAvailability(90);
         
         Product p2= s.getProductCatalog().addProduct();
         p2.setProductName("desktop");
         p2.setPrice(600);
+        p2.setAvailability(11);
         
         Supplier s1 = sd.addSupplier();
         s1.setSupplierName("HP");
@@ -58,10 +62,12 @@ public class ConfigureBusiness {
         Product p3= s1.getProductCatalog().addProduct();        
         p3.setProductName("Printer");
         p3.setPrice(1000);
+        p3.setAvailability(65);
         
         Product p4= s1.getProductCatalog().addProduct();        
         p4.setProductName("Laptop");
         p4.setPrice(1200);
+        p4.setAvailability(100);
 
         Supplier s3 = sd.addSupplier();
         s3.setSupplierName("Apple");
@@ -71,10 +77,12 @@ public class ConfigureBusiness {
                 Product p5= s3.getProductCatalog().addProduct();        
         p5.setProductName("Laptop");
         p5.setPrice(2000);
+        p5.setAvailability(20);
         
          Product p6= s3.getProductCatalog().addProduct();        
         p6.setProductName("Iphone");
         p6.setPrice(1000);
+        p6.setAvailability(88);
         
         
         EmployeeDirectory ed = business.getEmployeeDirectory();

@@ -6,6 +6,7 @@
 package Business.Person;
 
 import Business.Supplier.Supplier;
+import Utility.Validations;
 import java.util.ArrayList;
 
 /**
@@ -39,5 +40,22 @@ public class EmployeeDirectory {
     public void deletePerson(Person person)
     {
         personList.remove(person);
+    }
+    
+    public Person isValidUser(String userName, String password)
+    {
+        String pass=Validations.generateHash(password);
+         //UserAccount userAccount = new UserAccount();
+         for (Person person : personList) {
+             
+             if(person.getUserName().equalsIgnoreCase(userName)&&person.getPassword().equals(pass))
+             {
+                    
+
+                 return person;
+             
+             }
+        }
+         return null;
     }
 }

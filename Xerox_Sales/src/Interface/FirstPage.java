@@ -2,6 +2,7 @@ package Interface;
 
 
 import Business.Business;
+import Business.ConfigureBusiness;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -17,7 +18,7 @@ public class FirstPage extends javax.swing.JFrame {
     
     private FirstPage(){
     initComponents();
-    
+    business= ConfigureBusiness.Initialize();
     
     
              
@@ -82,7 +83,7 @@ public class FirstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        LoginPage loginPage = new LoginPage(userProcessContainer);
+        LoginPage loginPage = new LoginPage(userProcessContainer, business);
         userProcessContainer.add("LoginPage", loginPage);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);          

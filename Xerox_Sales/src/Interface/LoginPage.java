@@ -7,6 +7,9 @@ package Interface;
 
 
 import Business.Business;
+import Business.Person.Person;
+import Business.Supplier.Supplier;
+import UserInterface.SupplierRole.SupplierWorkAreaJPanel;
 
 import java.awt.CardLayout;
 import javax.security.auth.login.Configuration;
@@ -25,16 +28,17 @@ public class LoginPage extends javax.swing.JPanel {
     /**
      * Creates new form LoginPage
      */
-    
+        private Business business;
+   // private JPanel userProcessContainer;
     private JPanel userProcessContainer;
     
     
     
 
-    LoginPage(JPanel userProcessContainer) {
+    LoginPage(JPanel userProcessContainer,Business business) {
        initComponents();
         
-        
+        this.business= business;
         this.userProcessContainer = userProcessContainer;
     }
 
@@ -141,8 +145,39 @@ public class LoginPage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-       
-       
+       Supplier supplier = business.getSupplierDirectory().isValidUser(usernameTextField.getText(), passwordTextField.getText());
+       Person person = business.getEmployeeDirectory().isValidUser( usernameTextField.getText(), passwordTextField.getText());
+       usernameTextField.setText("");
+        passwordTextField.setText("");
+        
+        if(person!=null)
+        {
+//            if(person.getRole().equalsIgnoreCase("Admin"))
+//        {
+//                    AdminPage adminPage = new AdminPage(userProcessContainer, business,userAccount);
+//        userProcessContainer.add("AdminPage",adminPage);
+//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+//                
+//            
+//        }
+//            else if(person.getRole().equalsIgnoreCase("Sales person"))
+//        {
+//                    AdminPage adminPage = new AdminPage(userProcessContainer, business,userAccount);
+//        userProcessContainer.add("AdminPage",adminPage);
+//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+//                
+//            
+//        }
+        }
+        else if(supplier!=null)
+        {
+            SupplierWorkAreaJPanel supplierPage = new SupplierWorkAreaJPanel(userProcessContainer,supplier);
+        userProcessContainer.add("Supplier Login",supplierPage);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
 

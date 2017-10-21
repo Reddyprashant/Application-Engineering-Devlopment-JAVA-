@@ -20,6 +20,12 @@ public class MarketOffer {
     private Product product;
     private int price;
 
+    
+    public MarketOffer()
+    {
+        market= new Market();
+        product= new Product();
+    }
     public int getPrice() {
         return price;
     }
@@ -28,11 +34,7 @@ public class MarketOffer {
         this.price = price;
     }
     
-    public MarketOffer()
-    {
-        market= new Market();
-        product= new Product();
-    }
+    
     //private 
 
     public Market getMarket() {

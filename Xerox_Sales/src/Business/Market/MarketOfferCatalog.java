@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MarketOfferCatalog {
    private ArrayList<MarketOffer> marketOfferList;
    
-   private MarketOfferCatalog()
+   public MarketOfferCatalog()
    {
        marketOfferList= new ArrayList<MarketOffer>();
    }

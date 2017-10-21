@@ -25,6 +25,14 @@ public class Order {
     private Person person;
     private Customer customer;
 
+        public Order()
+    {
+        orderId = "ord"+ ++count;
+        orderItemList = new ArrayList<OrderItem>();
+        person = new Person();
+        customer= new Customer();
+    }
+    
     public Person getPerson() {
         return person;
     }
@@ -41,11 +49,7 @@ public class Order {
         this.customer = customer;
     }
     
-    public Order()
-    {
-        orderId = "ord"+ ++count;
-        orderItemList = new ArrayList<OrderItem>();
-    }
+
 
     public ArrayList<OrderItem> getOrderItemList() {
         return orderItemList;

@@ -49,6 +49,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
         for(Supplier s : supplierDirectory.getSupplierList()) {
             Object row[] = new Object[1];
             row[0] = s;
+            row[1] = s.getSupplierName();
             model.addRow(row);
         }
     }
@@ -73,17 +74,17 @@ public class ManageSuppliers extends javax.swing.JPanel {
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Supplier Name"
+                "Supplier Id", "Supplier Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

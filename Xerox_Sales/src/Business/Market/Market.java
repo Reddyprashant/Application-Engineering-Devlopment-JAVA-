@@ -27,7 +27,7 @@ public class Market {
         @Override
     public String toString()
     {
-        return this.marketId;
+        return this.marketName;
     }
 
     public String getMarketName() {

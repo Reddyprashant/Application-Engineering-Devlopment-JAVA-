@@ -21,6 +21,12 @@ public class Person {
     private String role;
     private ArrayList<Order> orderList;
 
+        public Person()
+    {
+        empId = "Emp"+ ++count;
+        orderList = new ArrayList<Order>();
+    }
+    
     public static int getCount() {
         return count;
     }
@@ -37,11 +43,7 @@ public class Person {
         this.orderList = orderList;
     }
     
-    public Person()
-    {
-        empId = "Emp"+ ++count;
-        orderList = new ArrayList<Order>();
-    }
+
 
     public String getName() {
         return name;

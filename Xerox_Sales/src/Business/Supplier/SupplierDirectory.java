@@ -5,6 +5,8 @@
  */
 package Business.Supplier;
 
+import Business.Person.Person;
+import Utility.Validations;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +24,7 @@ public class SupplierDirectory {
         this.supplierList = supplierList;
     }
    
-  private SupplierDirectory()
+  public SupplierDirectory()
   {
       supplierList = new ArrayList<Supplier>();
   }
@@ -36,5 +38,30 @@ public class SupplierDirectory {
     public void deleteSupplier(Supplier supplier)
     {
         supplierList.remove(supplier);
+    }
+        public Supplier searchSupplier(String keyWord) {
+        for(Supplier s : supplierList) {
+            if(keyWord.equals(s.getSupplierId())) {
+                return s;
+            }
+        }
+        return null;
+    }
+        
+        public Supplier isValidUser(String userName, String password)
+    {
+        String pass=Validations.generateHash(password);
+         //UserAccount userAccount = new UserAccount();
+         for (Supplier supplier : supplierList) {
+             
+             if(supplier.getUserName().equalsIgnoreCase(userName)&&supplier.getPassword().equals(pass))
+             {
+                    
+
+                 return supplier;
+             
+             }
+        }
+         return null;
     }
 }

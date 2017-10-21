@@ -30,6 +30,8 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         nameField.setText(p.getProductName());
         idField.setText(p.getProductId());
         priceField.setText(convertInteger(p.getPrice()));
+        availTxt.setText(String.valueOf(p.getAvailability()));
+        availTxt.setEnabled(false);
     }
 
     
@@ -54,6 +56,8 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         idField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        availTxt = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -115,6 +119,11 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
             }
         });
         add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 70, 30));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setText("Availability:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 110, -1));
+        add(availTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
@@ -122,6 +131,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
        nameField.setEditable(true);
        priceField.setEditable(true);
        saveButton.setEnabled(true);
+       availTxt.setEnabled(true);
 }//GEN-LAST:event_createButtonActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
@@ -142,15 +152,18 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         product.setPrice(Integer.parseInt(priceField.getText()));
         product.setProductName(nameField.getText());
+        product.setAvailability(Integer.parseInt(availTxt.getText()));
     }//GEN-LAST:event_saveButtonActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField availTxt;
     private javax.swing.JButton backButton1;
     private javax.swing.JButton createButton;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField priceField;

@@ -6,6 +6,7 @@
 package Business.Supplier;
 
 import Business.Product.ProductCatalog;
+import Utility.Validations;
 
 /**
  *
@@ -17,7 +18,13 @@ public class Supplier {
     private static int count=0;
     private String userName;
     private String password;
-
+ private ProductCatalog productCatalog;
+ 
+        public Supplier()
+    {
+        supplierId = "Supp"+ ++count;
+        productCatalog = new ProductCatalog();
+    }
     public String getSupplierId() {
         return supplierId;
     }
@@ -39,16 +46,13 @@ public class Supplier {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Validations.generateHash(password);
     }
     
-    private ProductCatalog productCatalog;
+   
 
     
-    public Supplier()
-    {
-        supplierId = "Supp"+ ++count;
-    }
+
     public String getSupplierName() {
         return supplierName;
     }

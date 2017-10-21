@@ -15,6 +15,10 @@ import java.util.ArrayList;
 public class MarketList {
     private ArrayList<Market> marketList;
 
+    public MarketList()
+    {
+        marketList = new ArrayList<Market>();
+    }
     public ArrayList<Market> getMarketList() {
         return marketList;
     }

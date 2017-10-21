@@ -15,6 +15,15 @@ public class Product {
     private String productId;
     private static int count=0;
     private int price;
+    private int availability;
+
+    public int getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
+    }
 
         public Product()
     {
@@ -43,5 +52,9 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
-
+@Override
+    public String toString()
+    {
+        return this.productId;
+    }
 }

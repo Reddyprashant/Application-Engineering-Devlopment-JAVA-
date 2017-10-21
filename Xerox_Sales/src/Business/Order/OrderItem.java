@@ -15,8 +15,14 @@ public class OrderItem {
     private MarketOffer marketOffer;
     private int quantity;
     private int paidPrice;
-    int a;
+    
 
+    public OrderItem()
+    {
+        marketOffer= new MarketOffer();
+                
+    }
+    
     public MarketOffer getMarketOffer() {
         return marketOffer;
     }
@@ -41,9 +47,5 @@ public class OrderItem {
         this.paidPrice = paidPrice;
     }
     
-    public OrderItem()
-    {
-        marketOffer= new MarketOffer();
-                
-    }
+    
 }

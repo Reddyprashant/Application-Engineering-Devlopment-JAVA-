@@ -17,7 +17,7 @@ public class ProductCatalog {
 
 
     
-    private ProductCatalog()
+    public ProductCatalog()
     {
         productList = new ArrayList<Product>();
     }
@@ -43,7 +43,7 @@ public class ProductCatalog {
     public Product searchProduct(String id) {
         //ArrayList<Product> result = new ArrayList<Product>();
         for(Product p : productList) {
-            if(p.getProductId()== id) {
+            if(p.getProductId().equals(id)) {
                 return p;
             }
         }

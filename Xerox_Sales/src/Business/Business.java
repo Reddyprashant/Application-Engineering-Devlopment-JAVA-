@@ -23,6 +23,14 @@ public class Business {
     private EmployeeDirectory employeeDirectory;
     private OrderList orderList;
 
+    public Business()
+    {
+        supplierDirectory = new SupplierDirectory();
+        marketList = new MarketList();
+        marketOfferCatalog= new MarketOfferCatalog();
+        employeeDirectory= new EmployeeDirectory();
+         orderList= new OrderList();       
+    }
     public OrderList getOrderList() {
         return orderList;
     }
