@@ -10,32 +10,22 @@ package Business.Product;
  * @author prashantreddy
  */
 public class Product {
-   private String productName;
-   private String description;
-   private String productId;
-   private int availability;
-   private static int count =0;
-   
-   public Product()
-   {
-       productId= "PRD"+ ++count;
-               
-   }
+    
+    private String productName;
+    private String productId;
+    private static int count=0;
+    private int price;
 
+        public Product()
+    {
+        productId ="prd"+ ++count;
+    }
     public String getProductName() {
         return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getProductId() {
@@ -46,11 +36,12 @@ public class Product {
         this.productId = productId;
     }
 
-    public int getAvailability() {
-        return availability;
+    public int getPrice() {
+        return price;
     }
 
-    public void setAvailability(int availability) {
-        this.availability = availability;
+    public void setPrice(int price) {
+        this.price = price;
     }
+
 }
