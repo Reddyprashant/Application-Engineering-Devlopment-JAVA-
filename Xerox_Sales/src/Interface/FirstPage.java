@@ -5,7 +5,7 @@ import Business.Business;
 import Business.ConfigureBusiness;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-
+import Business.ConfigureBusiness;
 
 
 public class FirstPage extends javax.swing.JFrame {
@@ -14,7 +14,7 @@ public class FirstPage extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     
-    private Business business;
+    
     
     private FirstPage(){
     initComponents();
