@@ -16,6 +16,10 @@ import java.util.ArrayList;
 public class Market {
     private String marketName;
     private String marketId;
+
+    public String getMarketId() {
+        return marketId;
+    }
     private static int count =0;
     private ArrayList<Customer> customerList;
     
@@ -24,11 +28,7 @@ public class Market {
         this.marketId ="MKT"+ ++count;
         customerList = new ArrayList<Customer>();
     }
-        @Override
-    public String toString()
-    {
-        return this.marketName;
-    }
+
 
     public String getMarketName() {
         return marketName;
@@ -44,5 +44,10 @@ public class Market {
 
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
+    }
+            @Override
+    public String toString()
+    {
+        return this.marketName;
     }
 }
