@@ -4,18 +4,28 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import Business.Business;
+import Market_ui.*;
+import Person_ui.*;
+import Supplier_ui.*;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 /**
  *
- * @author Dhruv Patel
+ * @author raj
  */
+
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SystemAdminWorkAreaJPanel
      */
-    public SystemAdminWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private Business business;
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,Business business) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.business=business;
     }
 
     /**
@@ -27,52 +37,98 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
-        btnSupplier = new javax.swing.JButton();
-        btnPerson = new javax.swing.JButton();
-        btnMarket = new javax.swing.JButton();
+        managePerson = new javax.swing.JButton();
+        manageSupplier = new javax.swing.JButton();
+        manageMarket = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("System Admin Work Area");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, -1, -1));
+        jLabel1.setText("Welcome System Admin");
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        btnBack.setText("Back");
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 1180, 220, 90));
-
-        btnSupplier.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        btnSupplier.setText("Supplier");
-        btnSupplier.addActionListener(new java.awt.event.ActionListener() {
+        managePerson.setText("Manage Person");
+        managePerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplierActionPerformed(evt);
+                managePersonActionPerformed(evt);
             }
         });
-        add(btnSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 340, 130));
 
-        btnPerson.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        btnPerson.setText("Person");
-        add(btnPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 340, 130));
+        manageSupplier.setText("Manage Supplier");
+        manageSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageSupplierActionPerformed(evt);
+            }
+        });
 
-        btnMarket.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        btnMarket.setText("Market");
-        add(btnMarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 800, 340, 130));
+        manageMarket.setText("Manage Market");
+        manageMarket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageMarketActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(managePerson)
+                    .addComponent(manageSupplier)
+                    .addComponent(manageMarket))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(managePerson)
+                .addGap(18, 18, 18)
+                .addComponent(manageSupplier)
+                .addGap(18, 18, 18)
+                .addComponent(manageMarket)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSupplierActionPerformed
+    private void managePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePersonActionPerformed
+       PersonJPanelForm pjp= new PersonJPanelForm(userProcessContainer, business);
+       userProcessContainer.add("ManageSupplierAdministrative", pjp);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
+    }//GEN-LAST:event_managePersonActionPerformed
+
+    private void manageSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSupplierActionPerformed
+       SupplierJPanelForm spjp= new SupplierJPanelForm(userProcessContainer, business);
+       userProcessContainer.add("ManageSupplierAdministrative", spjp);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageSupplierActionPerformed
+
+    private void manageMarketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMarketActionPerformed
+        MarketJPanelForm mjp= new MarketJPanelForm(userProcessContainer, business);
+        userProcessContainer.add("ManageSupplierAdministrative", mjp);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageMarketActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnMarket;
-    private javax.swing.JButton btnPerson;
-    private javax.swing.JButton btnSupplier;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton manageMarket;
+    private javax.swing.JButton managePerson;
+    private javax.swing.JButton manageSupplier;
     // End of variables declaration//GEN-END:variables
 }

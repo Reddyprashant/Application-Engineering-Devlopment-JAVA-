@@ -45,4 +45,14 @@ public class Market {
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
     }
+
+    public String getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
+    }
+    
+    
 }
