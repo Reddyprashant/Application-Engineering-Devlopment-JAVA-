@@ -18,6 +18,7 @@ import Business.*;
 import Business.Supplier.Supplier;
 import Business.Market.*;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
+import java.util.HashSet;
 /**
  *
  * @author raj
@@ -35,6 +36,16 @@ public class CreateCustomer extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
+//        for(Person person : business.getPersonDirectory().getPersonList()) {
+//           prsnComboBox.addItem(person);
+//           
+//       }
+//       HashSet<String> set=new HashSet<String>(); 
+              for(Market market : business.getMarketList().getMarketList()) {
+             
+//       .addItem(string);
+            comboBox.addItem(market);
+        }
     }
 
     /**
@@ -54,9 +65,7 @@ public class CreateCustomer extends javax.swing.JPanel {
         addressTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        marketNameTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        customerIdTextField = new javax.swing.JTextField();
+        comboBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
@@ -90,10 +99,6 @@ public class CreateCustomer extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Market Name:");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Customer Id:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,37 +122,32 @@ public class CreateCustomer extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(marketNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(marketNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(customerIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8))
+                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(createButton)
                 .addGap(14, 14, 14)
                 .addComponent(backButton)
@@ -157,19 +157,18 @@ public class CreateCustomer extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         String name=nameTextField.getText();
-        String customerId=customerIdTextField.getText();
-        String marketName=marketNameTextField.getText();
+        //String customerId=customerIdTextField.getText();
+        //String custN=nameTextField.getText();
         String address=addressTextField.getText();
+        Market market= (Market) comboBox.getSelectedItem();
         
-        Customer cust= 
-        
-        
-        m.setMarketName(name);
-        m.setMarketId(marketId);
-       
-        
-        
-        
+      
+                Customer customer=market.addCustomer();
+                
+                customer.setMarketName(market.getMarketName());
+                customer.setAddress(address);
+                customer.setName(name);
+
         JOptionPane.showMessageDialog(createButton,"Created succesfully");
     }//GEN-LAST:event_createButtonActionPerformed
 
@@ -180,21 +179,19 @@ public class CreateCustomer extends javax.swing.JPanel {
         
         Component[] componentArray=userProcessContainer.getComponents();
         mjp = (CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
-        mjp.populateMarketTable();  
+        mjp.populateCustomerTable();
     }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressTextField;
     private javax.swing.JButton backButton;
+    private javax.swing.JComboBox comboBox;
     private javax.swing.JButton createButton;
-    private javax.swing.JTextField customerIdTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField marketNameTextField;
     private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
 }

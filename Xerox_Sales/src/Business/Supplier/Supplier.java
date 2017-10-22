@@ -71,6 +71,6 @@ public class Supplier {
         @Override
     public String toString()
     {
-        return this.supplierId;
+        return this.supplierName;
     }
 }

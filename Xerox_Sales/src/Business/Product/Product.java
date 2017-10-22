@@ -55,6 +55,6 @@ public class Product {
 @Override
     public String toString()
     {
-        return this.productId;
+        return this.productName;
     }
 }

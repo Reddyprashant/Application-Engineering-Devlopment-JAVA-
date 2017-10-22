@@ -55,5 +55,9 @@ public class Customer {
         this.address = address;
     }
 
-   
+              @Override
+    public String toString()
+    {
+        return this.customerId;
+    }
 }

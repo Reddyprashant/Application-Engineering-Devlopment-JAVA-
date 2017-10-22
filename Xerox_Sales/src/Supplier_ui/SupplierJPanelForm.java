@@ -39,7 +39,7 @@ public class SupplierJPanelForm extends javax.swing.JPanel {
                     Object row[] = new Object[4];
                     row[0] = supplier;
                     //row[1] = supplier.getSupplierId();
-                    row[1] = supplier.getSupplierName();
+                    row[1] = supplier.getSupplierId();
                     row[2] = supplier.getUserName();
                     
                     
@@ -98,7 +98,7 @@ public class SupplierJPanelForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Name", "Username"
+                "Name", "Id", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {

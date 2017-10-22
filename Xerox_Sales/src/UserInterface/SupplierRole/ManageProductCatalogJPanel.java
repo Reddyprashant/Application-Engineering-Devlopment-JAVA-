@@ -43,7 +43,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             Object row[] = new Object[5];
             row[0] = p;
             //row[1] = p.getModelNumber();
-            row[1] = p.getProductName();
+            row[1] = p.getProductId();
             row[2]= p.getPrice();
             row[3]= p.getAvailability();
             model.addRow(row);
@@ -84,7 +84,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Product ID", "Product Name", "Price", "Availability"
+                "Product Name", "Product ID", "Price", "Availability"
             }
         ) {
             boolean[] canEdit = new boolean [] {

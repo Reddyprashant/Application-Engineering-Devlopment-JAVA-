@@ -162,7 +162,7 @@ public class ConfigureBusiness {
                  }
                  else if(market2.getMarketName().equals("Financial")){
           marketOffer1= marketOfferCatalog.addMarketOffer();
-        marketOffer1.setMarket(market);
+        marketOffer1.setMarket(market1);
         marketOffer1.setProduct(product);
         marketOffer1.setTargetRatio(1.3);
         marketOffer1.setFloorRatio(1.1);

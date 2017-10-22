@@ -9,6 +9,7 @@ import Market_ui.*;
 import Supplier_ui.*;
 import Person_ui.*;
 import Business.Business;
+import Business.Customer;
 import Business.Person.Person;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -31,21 +32,26 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
-        populateMarketTable();
+        populateCustomerTable();
     }
     
-    public void populateMarketTable(){
-        DefaultTableModel dtm = (DefaultTableModel)marketTable.getModel();
+    public void populateCustomerTable(){
+        DefaultTableModel dtm = (DefaultTableModel)customerTable.getModel();
         dtm.setRowCount(0);
         
         for (Market mar:business.getMarketList().getMarketList()){ 
-                    Object row[] = new Object[4];
-                    row[0] = mar;
-                    row[1] = mar.getMarketName();
+            for (Customer customer : mar.getCustomerList()) {
+                  Object row[] = new Object[4];
+                    row[0] = customer;
+                    row[1]= customer.getName();
+                    row[2] = mar;
+                    row[3]= customer.getAddress();
                     
                     
                     
-                    dtm.addRow(row);  
+                    dtm.addRow(row);    
+            }
+                
             }
     }
     /**
@@ -63,7 +69,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         updateSupplier = new javax.swing.JButton();
         deleteSupplier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        marketTable = new javax.swing.JTable();
+        customerTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -71,38 +77,46 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Supplier");
+        jLabel1.setText("Manage Customer");
 
-        addSupplierButton.setText("Add Supplier");
+        addSupplierButton.setText("Add Customer");
         addSupplierButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSupplierButtonActionPerformed(evt);
             }
         });
 
-        updateSupplier.setText("Update Supplier");
+        updateSupplier.setText("Update Customer");
         updateSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateSupplierActionPerformed(evt);
             }
         });
 
-        deleteSupplier.setText("Delete Supplier");
+        deleteSupplier.setText("Delete Customer");
         deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteSupplierActionPerformed(evt);
             }
         });
 
-        marketTable.setModel(new javax.swing.table.DefaultTableModel(
+        customerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Market Id", "Market Name"
+                "Customer Id", "Customer Name", "Market Name", "Customer Address"
             }
-        ));
-        jScrollPane1.setViewportView(marketTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(customerTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +125,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addSupplierButton)
@@ -119,7 +133,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
                             .addComponent(deleteSupplier))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +156,12 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateSupplierActionPerformed
-        int selectedrow=marketTable.getSelectedRow();
+        int selectedrow=customerTable.getSelectedRow();
         
         if(selectedrow>=0)
         {  
-        Market res=(Market)marketTable.getValueAt(selectedrow,0);
-        UpdateCustomer up= new UpdateCustomer(userProcessContainer,business,res);
+        Customer res=(Customer)customerTable.getValueAt(selectedrow,0);
+        UpdateCustomer up= new UpdateCustomer(userProcessContainer,business, res);
         userProcessContainer.add("ManageSupplierAdministrative", up);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -164,13 +178,14 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
     }//GEN-LAST:event_addSupplierButtonActionPerformed
 
     private void deleteSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierActionPerformed
-       int selectedrow= marketTable.getSelectedRow();
+       int selectedrow= customerTable.getSelectedRow();
        if(selectedrow>=0)
         {    
             JOptionPane.showMessageDialog(deleteSupplier,"Are you sure you want to delete this entry?");
-            Market res=(Market)marketTable.getValueAt(selectedrow,0);
-            business.getMarketList().deleteMarket(res);
-            populateMarketTable();
+            Customer res=(Customer)customerTable.getValueAt(selectedrow,0);
+          Market mar=(Market)customerTable.getValueAt(selectedrow,2); 
+            mar.deleteCustomer(res);
+           populateCustomerTable();
             JOptionPane.showMessageDialog(deleteSupplier,"Person deleted");
         }
        else
@@ -180,11 +195,11 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupplierButton;
+    private javax.swing.JTable customerTable;
     private javax.swing.JButton deleteSupplier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable marketTable;
     private javax.swing.JButton updateSupplier;
     // End of variables declaration//GEN-END:variables
 }

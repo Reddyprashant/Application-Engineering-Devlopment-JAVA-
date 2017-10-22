@@ -9,6 +9,7 @@ import Market_ui.*;
 import Supplier_ui.*;
 import Person_ui.*;
 import Business.Business;
+import Business.Customer;
 import Business.Market.Market;
 import Business.Person.Person;
 import javax.swing.JPanel;
@@ -28,7 +29,7 @@ public class UpdateCustomer extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Business business;
-    private Market res;
+    private Customer res;
     private CustomerJPanelForm mjp;
     
 
@@ -36,20 +37,27 @@ public class UpdateCustomer extends javax.swing.JPanel {
 
     
 
-    UpdateCustomer(JPanel userProcessContainer, Business business, Market res) {
+    UpdateCustomer(JPanel userProcessContainer, Business business, Customer res) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.res=res;
         
-        nameTextField.setText(String.valueOf(res.getMarketName()));
-        marketIdTextField.setText(String.valueOf(res.getMarketId()));
-        
-       
+        nameTextField.setText(String.valueOf(res.getName()));
+        marketIdTextField.setText(String.valueOf(res.getCustomerId()));
+        addTxt.setText(res.getAddress());
+        for(Market market : business.getMarketList().getMarketList()) {
+             
+//       .addItem(string);
+            comboBox.addItem(res.getMarketName());
+        }
         
         nameTextField.setEnabled(false);
         marketIdTextField.setEnabled(false);
+        addTxt.setEnabled(false);
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,12 +76,16 @@ public class UpdateCustomer extends javax.swing.JPanel {
         marketIdTextField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         enableButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        addTxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        comboBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Market Id:");
+        jLabel7.setText("Customer Id:");
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,11 +96,14 @@ public class UpdateCustomer extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Update Market");
+        jLabel1.setText("Update Customer");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name:");
+
+        marketIdTextField.setEditable(false);
+        marketIdTextField.setEnabled(false);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +119,22 @@ public class UpdateCustomer extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Customer Address:");
+
+        addTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Market Name:");
+
+        comboBox.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,22 +146,26 @@ public class UpdateCustomer extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                    .addComponent(marketIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                    .addComponent(addTxt)
+                                    .addComponent(comboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(167, 167, 167)
                                 .addComponent(enableButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updateButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(marketIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(updateButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backButton)))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,19 +180,28 @@ public class UpdateCustomer extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(marketIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(131, 131, 131)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(addTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton)
                     .addComponent(enableButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-      res.setMarketName(nameTextField.getText());
-      res.setMarketId(marketIdTextField.getText());
+      res.setName(nameTextField.getText());
+      //res.setMarketId(marketIdTextField.getText());
+      res.setAddress(addTxt.getText());
       
       
         
@@ -170,23 +214,33 @@ public class UpdateCustomer extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
         Component[] componentArray=userProcessContainer.getComponents();
         mjp =(CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
-        mjp.populateMarketTable();
+        mjp.populateCustomerTable();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void enableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableButtonActionPerformed
         nameTextField.setEnabled(true);
-        marketIdTextField.setEnabled(true);
+        //marketIdTextField.setEnabled(true);
+        addTxt.setEnabled(true);
+        
         
         
     }//GEN-LAST:event_enableButtonActionPerformed
 
+    private void addTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addTxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addTxt;
     private javax.swing.JButton backButton;
+    private javax.swing.JComboBox comboBox;
     private javax.swing.JButton enableButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField marketIdTextField;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JButton updateButton;

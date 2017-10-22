@@ -68,10 +68,12 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Supplier");
+        jLabel1.setText("Manage Market");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 330, 61));
 
         addSupplierButton.setText("Add Market");
         addSupplierButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +81,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
                 addSupplierButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(addSupplierButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 130, 50));
 
         updateSupplier.setText("Update Market");
         updateSupplier.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +89,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
                 updateSupplierActionPerformed(evt);
             }
         });
+        jPanel1.add(updateSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 150, 40));
 
         deleteSupplier.setText("Delete Market");
         deleteSupplier.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +97,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
                 deleteSupplierActionPerformed(evt);
             }
         });
+        jPanel1.add(deleteSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 140, 40));
 
         marketTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,53 +117,15 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(marketTable);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 85, 505, -1));
+
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addSupplierButton)
-                            .addComponent(updateSupplier)
-                            .addComponent(deleteSupplier)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(backBtn)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(addSupplierButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(updateSupplier)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteSupplier)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
-                        .addComponent(backBtn)
-                        .addGap(18, 18, 18))))
-        );
+        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

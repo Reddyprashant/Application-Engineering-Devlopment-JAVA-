@@ -7,6 +7,7 @@ package Business.Market;
 
 import Business.Customer;
 import Business.Person.Person;
+import Business.Product.Product;
 import Business.Supplier.Supplier;
 import java.util.ArrayList;
 
@@ -17,10 +18,6 @@ import java.util.ArrayList;
 public class Market {
     private String marketName;
     private String marketId;
-
-    public String getMarketId() {
-        return marketId;
-    }
     private static int count =0;
     private ArrayList<Customer> customerList;
     
@@ -46,19 +43,13 @@ public class Market {
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
     }
-            @Override
-    public String toString()
-    {
-        return this.marketName;
-    }
+            
 
     public String getMarketId() {
         return marketId;
     }
 
-    public void setMarketId(String marketId) {
-        this.marketId = marketId;
-    }
+
 
     public static int getCount() {
         return count;
@@ -68,5 +59,19 @@ public class Market {
         Market.count = count;
     }
     
-   
+   public Customer addCustomer()
+   {
+       Customer cus = new Customer();
+       customerList.add(cus);
+       return  cus;
+   }
+       public void deleteCustomer(Customer customer)
+    {
+        customerList.remove(customer);
+    }
+       @Override
+    public String toString()
+    {
+        return this.marketName;
+    }
 }

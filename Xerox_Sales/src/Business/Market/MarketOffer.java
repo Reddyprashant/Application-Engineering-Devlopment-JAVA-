@@ -18,21 +18,23 @@ public class MarketOffer {
     private double ceilRatio;
     private double targetRatio;
     private Product product;
-    private int price;
-
+   // private int price;
+    private String marketOfferId;
+    private static int count=0;
     
     public MarketOffer()
     {
         market= new Market();
         product= new Product();
+        marketOfferId="MO"+ ++count;
     }
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+//    public int getPrice() {
+//        return price;
+//    }
+//
+//    public void setPrice(int price) {
+//        this.price = price;
+//    }
     
     
     //private 
@@ -75,5 +77,10 @@ public class MarketOffer {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+    @Override
+    public String toString()
+    {
+        return this.marketOfferId;
     }
 }
