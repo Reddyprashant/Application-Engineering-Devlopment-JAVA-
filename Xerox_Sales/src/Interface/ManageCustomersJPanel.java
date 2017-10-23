@@ -186,7 +186,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-          userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_logoutButtonActionPerformed

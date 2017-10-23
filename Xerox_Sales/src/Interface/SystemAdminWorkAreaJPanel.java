@@ -48,7 +48,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageMarket = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         manageOfferBtn = new javax.swing.JButton();
-        logoutBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -57,6 +56,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcome System Admin");
+        jPanel1.add(jLabel1);
 
         managePerson.setText("Manage Person");
         managePerson.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +64,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 managePersonActionPerformed(evt);
             }
         });
+        jPanel1.add(managePerson);
 
         manageSupplier.setText("Manage Supplier");
         manageSupplier.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +72,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageSupplierActionPerformed(evt);
             }
         });
+        jPanel1.add(manageSupplier);
 
         manageMarket.setText("Manage Market");
         manageMarket.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +80,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageMarketActionPerformed(evt);
             }
         });
+        jPanel1.add(manageMarket);
 
         jButton1.setText("Customer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +88,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
 
         manageOfferBtn.setText("Manage Market Offer");
         manageOfferBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -92,58 +96,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOfferBtnActionPerformed(evt);
             }
         });
-
-        logoutBtn.setText("Logout");
-        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                        .addComponent(logoutBtn)
-                        .addGap(57, 57, 57))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(managePerson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageMarket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageOfferBtn))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(logoutBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(managePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(manageSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(manageMarket, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(manageOfferBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
+        jPanel1.add(manageOfferBtn);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -185,19 +138,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOfferBtnActionPerformed
 
-    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        // TODO add your handling code here:
-                  userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_logoutBtnActionPerformed
+                           
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton logoutBtn;
     private javax.swing.JButton manageMarket;
     private javax.swing.JButton manageOfferBtn;
     private javax.swing.JButton managePerson;

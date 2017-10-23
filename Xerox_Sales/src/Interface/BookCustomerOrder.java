@@ -71,7 +71,6 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         suppComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         viewProdjButton2 = new javax.swing.JButton();
         addtoCartButton6 = new javax.swing.JButton();
         quantitySpinner = new javax.swing.JSpinner();
@@ -132,15 +131,6 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Supplier Product Catalog");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 240, -1));
-
-        btnBack.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 90, -1));
 
         viewProdjButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         viewProdjButton2.setText("View Product Detail");
@@ -308,11 +298,6 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         // TODO add your handling code here:
         populateTable();
     }//GEN-LAST:event_suppComboBox1ActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void viewProdjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProdjButton2ActionPerformed
         // TODO add your handling code here:
@@ -522,7 +507,6 @@ public void refreshOrderTable()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addtoCartButton6;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnModifyQuantity;
     private javax.swing.JButton btnRemoveOrderItem;

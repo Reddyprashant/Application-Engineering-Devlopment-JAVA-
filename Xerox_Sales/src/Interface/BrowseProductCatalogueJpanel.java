@@ -86,7 +86,6 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
-        logoutButton = new javax.swing.JButton();
         catalogueComboBox = new javax.swing.JComboBox();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -127,9 +126,6 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
         nameTextField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 66, 106, -1));
 
-        logoutButton.setText("Logout");
-        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(668, 11, -1, -1));
-
         catalogueComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 catalogueComboBoxActionPerformed(evt);
@@ -143,7 +139,7 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
 
         productTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,7 +180,6 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JTable productTable;
     // End of variables declaration//GEN-END:variables
