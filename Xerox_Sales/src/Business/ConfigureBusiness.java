@@ -35,22 +35,22 @@ public class ConfigureBusiness {
 
         Supplier s = sd.addSupplier();
         s.setSupplierName("Dell");
-        s.setUserName("s123");
-        s.setPassword("s123");
+        s.setUserName("d123");
+        s.setPassword("d123");
         
 
         Product p= s.getProductCatalog().addProduct();
-        p.setProductName("Laptop");
+        p.setProductName(" Dell Inspiron 15 laptop");
         p.setPrice(1000);
         p.setAvailability(77);
         
          Product p1= s.getProductCatalog().addProduct();
-        p1.setProductName("Printer");
+        p1.setProductName("Dell Smart Printer");
         p1.setPrice(800);
         p1.setAvailability(90);
         
         Product p2= s.getProductCatalog().addProduct();
-        p2.setProductName("desktop");
+        p2.setProductName("Dell Inspiron 27 Desktop");
         p2.setPrice(600);
         p2.setAvailability(11);
         
@@ -60,12 +60,12 @@ public class ConfigureBusiness {
         s1.setPassword("h123");
         
         Product p3= s1.getProductCatalog().addProduct();        
-        p3.setProductName("Printer");
+        p3.setProductName("HP OfficeJet Pro Printer");
         p3.setPrice(1000);
         p3.setAvailability(65);
         
         Product p4= s1.getProductCatalog().addProduct();        
-        p4.setProductName("Laptop");
+        p4.setProductName("HP Chromebook Laptop");
         p4.setPrice(1200);
         p4.setAvailability(100);
 
@@ -75,14 +75,36 @@ public class ConfigureBusiness {
         s3.setPassword("a123");
         
                 Product p5= s3.getProductCatalog().addProduct();        
-        p5.setProductName("Laptop");
+        p5.setProductName("Apple MacBook Pro 13 inch");
         p5.setPrice(2000);
         p5.setAvailability(20);
         
          Product p6= s3.getProductCatalog().addProduct();        
-        p6.setProductName("Iphone");
+        p6.setProductName("Iphone 8 Plus");
         p6.setPrice(1000);
         p6.setAvailability(88);
+        
+        Supplier s4 = sd.addSupplier();
+        s4.setSupplierName("Samasung");
+        s4.setUserName("s123");
+        s4.setPassword("s123");
+        
+        Product p7= s4.getProductCatalog().addProduct();        
+        p7.setProductName("Samsung Galaxy S8");
+        p7.setPrice(900);
+        p7.setAvailability(100);
+        
+        Product p8 = s4.getProductCatalog().addProduct();        
+        p8.setProductName("Samsung QLED TV");
+        p8.setPrice(700);
+        p8.setAvailability(150);
+        
+        Product p9 = s4.getProductCatalog().addProduct();        
+        p9.setProductName("Samsung Gear S3");
+        p9.setPrice(800);
+        p9.setAvailability(350);
+       
+        
         
         
         EmployeeDirectory ed = business.getEmployeeDirectory();
@@ -94,11 +116,102 @@ public class ConfigureBusiness {
         person.setPassword("a123");
 
         Person person1 = ed.addPerson();
-        person1.setName("ABD");
+        person1.setName("Nirav");
         person1.setRole("Sales person");
-        person1.setPassword("s123");
-        person1.setUserName("sales");
+        person1.setPassword("s111");
+        person1.setUserName("sales1");
+        
+        Person person2 = ed.addPerson();
+        person2.setName("Raj");
+        person2.setRole("Sales person");
+        person2.setPassword("s222");
+        person2.setUserName("sales2");
+        
+        Person person3 = ed.addPerson();
+        person3.setName("Vinyas");
+        person3.setRole("Sales person");
+        person3.setPassword("s333");
+        person3.setUserName("sales3");
+        
+        Person person4 = ed.addPerson();
+        person4.setName("Kaushik");
+        person4.setRole("Sales person");
+        person4.setPassword("s444");
+        person4.setUserName("sales4");
+        
+        Person person5 = ed.addPerson();
+        person5.setName("Priya");
+        person5.setRole("Sales person");
+        person5.setPassword("s555");
+        person5.setUserName("sales5");
 
+        Person person6 = ed.addPerson();
+        person6.setName("Vijay");
+        person6.setRole("Sales person");
+        person6.setPassword("s666");
+        person6.setUserName("sales6");
+        
+        Person person7 = ed.addPerson();
+        person7.setName("Smita");
+        person7.setRole("Sales person");
+        person7.setPassword("s777");
+        person7.setUserName("sales7");
+        
+        Person person8 = ed.addPerson();
+        person8.setName("Abhishek");
+        person8.setRole("Sales person");
+        person8.setPassword("s888");
+        person8.setUserName("sales8");
+        
+        Person person9 = ed.addPerson();
+        person9.setName("Dhruv");
+        person9.setRole("Sales person");
+        person9.setPassword("s999");
+        person9.setUserName("sales9");
+        
+        Person person10 = ed.addPerson();
+        person10.setName("Prashant");
+        person10.setRole("Sales person");
+        person10.setPassword("s1010");
+        person10.setUserName("sales10");
+        
+        Person person11 = ed.addPerson();
+        person11.setName("Urvi");
+        person11.setRole("Sales person");
+        person11.setPassword("s1111");
+        person11.setUserName("sales11");
+        
+        Person person12 = ed.addPerson();
+        person12.setName("Jhanvi");
+        person12.setRole("Sales person");
+        person12.setPassword("s1212");
+        person12.setUserName("sales12");
+        
+        Person person13 = ed.addPerson();
+        person13.setName("Payal");
+        person13.setRole("Sales person");
+        person13.setPassword("s1313");
+        person13.setUserName("sales13");
+        
+        Person person14 = ed.addPerson();
+        person14.setName("Karan");
+        person14.setRole("Sales person");
+        person14.setPassword("s1414");
+        person14.setUserName("sales14");
+        
+        Person person15 = ed.addPerson();
+        person15.setName("Dipesh");
+        person15.setRole("Sales person");
+        person15.setPassword("s1515");
+        person15.setUserName("sales15");
+        
+        Person person16 = ed.addPerson();
+        person16.setName("Mayur");
+        person16.setRole("Sales person");
+        person16.setPassword("s1616");
+        person16.setUserName("sales16");
+        
+        
         MarketList ml = business.getMarketList();
         Market market = ml.addMarket();
         market.setMarketName("Education");
@@ -122,7 +235,7 @@ public class ConfigureBusiness {
 
         Customer customer2 = new Customer();
 
-        customer2.setName("BOA");
+        customer2.setName("BOfA");
         customer2.setMarketName(market1.getMarketName());
         customer2.setAddress("boston");
 
@@ -143,6 +256,9 @@ public class ConfigureBusiness {
         products.add(p4);
         products.add(p5);
         products.add(p6);
+        products.add(p7);
+        products.add(p8);
+        products.add(p9);
         MarketOffer marketOffers = new MarketOffer();
         MarketOffer marketOffer1 = new MarketOffer();
         
