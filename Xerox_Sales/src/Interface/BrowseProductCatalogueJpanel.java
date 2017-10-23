@@ -224,8 +224,8 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void viewDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsButtonActionPerformed
-       ViewDetailsJPanel vdjp=new ViewDetailsJPanel(userProcessContainer);
-       userProcessContainer.add("ManageSupplierAdministrative", vdjp);
+       //ViewDetailsJPanel vdjp=new ViewDetailsJPanel(userProcessContainer);
+       //userProcessContainer.add("ManageSupplierAdministrative", vdjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewDetailsButtonActionPerformed

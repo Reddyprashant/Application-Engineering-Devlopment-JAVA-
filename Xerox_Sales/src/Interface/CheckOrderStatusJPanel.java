@@ -244,8 +244,8 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsButtonActionPerformed
-       ViewDetailsJPanel vdjp= new ViewDetailsJPanel(userProcessContainer);
-       userProcessContainer.add("ManageSupplierAdministrative", vdjp);
+       //ViewDetailsJPanel vdjp= new ViewDetailsJPanel(userProcessContainer);
+       //userProcessContainer.add("ManageSupplierAdministrative", vdjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
        

@@ -7,6 +7,7 @@ package Business.Order;
 
 import Business.Customer;
 import Business.Person.Person;
+import Business.Product.Product;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -94,9 +95,31 @@ public class Order {
     public OrderItem addOrderItem()
     {
         OrderItem orderItem= new OrderItem();
+        //orderItem.getMarketOffer().setProduct(product);
         orderItemList.add(orderItem);
         return orderItem;
                 
+    }
+    public void removeOrderItem(OrderItem orderItem) {
+        orderItemList.remove(orderItem);
+    }
+    
+   public OrderItem searchOrderItem(int orderItemName) {
+        for(OrderItem orderItem : orderItemList) {
+            if(orderItem.getMarketOffer().getProduct().getProductName().equals(orderItemName)) {
+                return orderItem;
+            }
+        }
+        return null;
+    }
+    
+   public int orderTotal(){
+        int totalPriceOrder = 0;
+        for(OrderItem orderItem:orderItemList){
+            
+        totalPriceOrder =+ orderItem.orderItemTotal();
+        }
+        return totalPriceOrder;
     }
     
 }

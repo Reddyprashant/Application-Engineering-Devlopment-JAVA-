@@ -140,7 +140,7 @@ public class CreateMarketOffer extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 70, -1, -1));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
    public void populateProductCombo()
    {
@@ -163,9 +163,9 @@ public class CreateMarketOffer extends javax.swing.JPanel {
         MarketOffer marketOffer = business.getMarketOfferCatalog().addMarketOffer();
         Product product = (Product)productComboBox.getSelectedItem();
         Market market = (Market)marketComboBox.getSelectedItem();
-        marketOffer.setFloorRatio(Integer.parseInt(flrTxt.getText()));
-        marketOffer.setTargetRatio(Integer.parseInt(tarTxt.getText()));
-        marketOffer.setCeilRatio(Integer.parseInt(ceilTxt.getText()));
+        marketOffer.setFloorRatio(Double.parseDouble(flrTxt.getText()));
+        marketOffer.setTargetRatio(Double.parseDouble(tarTxt.getText()));
+        marketOffer.setCeilRatio(Double.parseDouble(ceilTxt.getText()));
         marketOffer.setProduct(product);
         marketOffer.setMarket(market);
         JOptionPane.showMessageDialog(null,"Created succesfully");

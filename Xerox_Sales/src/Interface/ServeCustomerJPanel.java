@@ -6,6 +6,8 @@
 package Interface;
 
 import Business.Business;
+import Business.Customer;
+import Business.Person.Person;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -21,13 +23,19 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     
+private Business business;
+private Customer customer;
+private Person person;
 
-
-    ServeCustomerJPanel(JPanel userProcessContainer) {
+    ServeCustomerJPanel(JPanel userProcessContainer, Business business, Customer customer, Person person) {
     initComponents();
     
     this.userProcessContainer=userProcessContainer;  
-    
+    this.business=business;
+    this.customer=customer;
+    this.person=person;
+    customerNameTextField.setText(customer.getName());
+    nameTextField.setText(person.getName());
     
     }
 
@@ -60,8 +68,6 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
         browseProductCatalogueButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         viewCustomerHistoryButton = new javax.swing.JButton();
-        customerPhoneNumberTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -123,14 +129,6 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
 
         viewCustomerHistoryButton.setText("View Customer History");
 
-        customerPhoneNumberTextField.setBackground(new java.awt.Color(51, 51, 51));
-        customerPhoneNumberTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        customerPhoneNumberTextField.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Customer Phone Number:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,7 +140,7 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,18 +167,12 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(checkOrderStatusButton)
-                                    .addComponent(browseProductCatalogueButton))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(browseProductCatalogueButton)
                                     .addComponent(jLabel5)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(121, 121, 121)
                                         .addComponent(customerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(customerPhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -204,14 +196,10 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
                         .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(UserNameJLabel)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(customerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(customerPhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(customerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookCustomerOrder)
                     .addComponent(viewCustomerHistoryButton))
@@ -226,8 +214,8 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bookCustomerOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookCustomerOrderActionPerformed
-       BookCustomerOrderJPanel bcojp=new BookCustomerOrderJPanel(userProcessContainer);
-       userProcessContainer.add("ManageSupplierAdministrative", bcojp);
+       BookCustomerOrder bookCustomerOrder=new BookCustomerOrder(userProcessContainer, business, customer, person);
+       userProcessContainer.add("ManageSupplierAdministrative", bookCustomerOrder);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_bookCustomerOrderActionPerformed
@@ -253,7 +241,6 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton browseProductCatalogueButton;
     private javax.swing.JButton checkOrderStatusButton;
     private javax.swing.JTextField customerNameTextField;
-    private javax.swing.JTextField customerPhoneNumberTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -261,7 +248,6 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;

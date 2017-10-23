@@ -32,6 +32,8 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.marketOffer= marketOffer;
         
+        marketComboBox.addItem(marketOffer.getMarket().getMarketName());
+        productComboBox.addItem(marketOffer.getProduct().getProductName());
     }
 
     /**
@@ -46,8 +48,6 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         marketComboBox = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        supplierComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         productComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
@@ -61,16 +61,13 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Update Offer");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 49, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Market Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 180, -1, -1));
 
         marketComboBox.setEnabled(false);
         marketComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -78,42 +75,26 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
                 marketComboBoxActionPerformed(evt);
             }
         });
-        add(marketComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 176, 121, -1));
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Supplier Name");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 225, -1, -1));
-
-        supplierComboBox.setEnabled(false);
-        add(supplierComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 221, 121, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Product:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 269, -1, -1));
 
         productComboBox.setEnabled(false);
-        add(productComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 265, 121, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Floor Price:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 310, -1, -1));
-        add(flrTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 310, 121, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Target Price:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 354, -1, -1));
 
         tarTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tarTxtActionPerformed(evt);
             }
         });
-        add(tarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 354, 121, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Ceil Price:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 403, -1, -1));
-        add(ceilTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 398, 121, -1));
 
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +102,6 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 465, -1, -1));
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +109,85 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addComponent(jLabel1)
+                .addGap(240, 240, 240)
+                .addComponent(backBtn))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(jLabel2)
+                .addGap(111, 111, 111)
+                .addComponent(marketComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(300, 300, 300)
+                .addComponent(jLabel4)
+                .addGap(138, 138, 138)
+                .addComponent(productComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel5)
+                .addGap(130, 130, 130)
+                .addComponent(flrTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(jLabel6)
+                .addGap(120, 120, 120)
+                .addComponent(tarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(jLabel7)
+                .addGap(136, 136, 136)
+                .addComponent(ceilTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(422, 422, 422)
+                .addComponent(updateBtn))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1))
+                    .addComponent(backBtn))
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel2))
+                    .addComponent(marketComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(productComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5))
+                    .addComponent(flrTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6))
+                    .addComponent(tarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel7))
+                    .addComponent(ceilTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(updateBtn))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void marketComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketComboBoxActionPerformed
@@ -142,14 +200,10 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        MarketOffer marketOffer = business.getMarketOfferCatalog().addMarketOffer();
-        marketOffer.setFloorRatio(Integer.parseInt(flrTxt.getText()));
-        marketOffer.setTargetRatio(Integer.parseInt(tarTxt.getText()));
-        marketOffer.setCeilRatio(Integer.parseInt(ceilTxt.getText()));
-         Product product = (Product)productComboBox.getSelectedItem();
-        Market market = (Market)marketComboBox.getSelectedItem();
-                marketOffer.setProduct(product);
-        marketOffer.setMarket(market);
+       // MarketOffer marketOffer = business.getMarketOfferCatalog().addMarketOffer();
+        marketOffer.setFloorRatio(Double.parseDouble(flrTxt.getText()));
+        marketOffer.setTargetRatio(Double.parseDouble(tarTxt.getText()));
+        marketOffer.setCeilRatio(Double.parseDouble(ceilTxt.getText()));
         JOptionPane.showMessageDialog(null,"Updated succesfully");
     }//GEN-LAST:event_updateBtnActionPerformed
 
@@ -171,14 +225,12 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
     private javax.swing.JTextField flrTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox marketComboBox;
     private javax.swing.JComboBox productComboBox;
-    private javax.swing.JComboBox supplierComboBox;
     private javax.swing.JTextField tarTxt;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables

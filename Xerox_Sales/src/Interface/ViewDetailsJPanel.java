@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import Business.Business;
+import Business.Person.Person;
+import Business.Product.Product;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -18,13 +21,21 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
      * Creates new form ViewDetailsJPanel
      */
     private JPanel userProcessContainer;
-    public ViewDetailsJPanel() {
-        initComponents();
-    }
-
-    ViewDetailsJPanel(JPanel userProcessContainer) {
+//    public ViewDetailsJPanel() {
+//        initComponents();
+//    }
+    private Business business;
+  private  Product product ;
+   public ViewDetailsJPanel(JPanel userProcessContainer,Business business, Product product) {
        initComponents();
        this.userProcessContainer=userProcessContainer;
+       this.business=business;
+       this.product= product;
+       pidTF.setText(product.getProductId());
+       pnTF.setText(product.getProductName());
+       tpTF.setText(String.valueOf(product.getPrice()));
+       availTF.setText(String.valueOf(product.getAvailability()));
+       
     }
 
     /**
@@ -46,10 +57,9 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
         pidTF = new javax.swing.JTextField();
         pnTF = new javax.swing.JTextField();
         tpTF = new javax.swing.JTextField();
-        descTF = new javax.swing.JTextField();
+        availTF = new javax.swing.JTextField();
         BackButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        logoutButton = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -75,17 +85,29 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Target Price:");
+        jLabel5.setText("Price:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 231, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Description:");
+        jLabel6.setText("Availability :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 288, -1, -1));
+
+        pidTF.setEditable(false);
+        pidTF.setEnabled(false);
         jPanel1.add(pidTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 191, -1));
+
+        pnTF.setEditable(false);
+        pnTF.setEnabled(false);
         jPanel1.add(pnTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 162, 191, -1));
+
+        tpTF.setEditable(false);
+        tpTF.setEnabled(false);
         jPanel1.add(tpTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 219, 191, -1));
-        jPanel1.add(descTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 276, 191, -1));
+
+        availTF.setEditable(false);
+        availTF.setEnabled(false);
+        jPanel1.add(availTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 276, 191, -1));
 
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,21 +119,15 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
-        logoutButton.setText("Logout");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 35, Short.MAX_VALUE)
-                .addComponent(logoutButton))
+            .addGap(0, 110, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(logoutButton)
-                .addGap(0, 77, Short.MAX_VALUE))
+            .addGap(0, 106, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 28, -1, -1));
@@ -128,7 +144,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JTextField descTF;
+    private javax.swing.JTextField availTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -137,7 +153,6 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField pidTF;
     private javax.swing.JTextField pnTF;
     private javax.swing.JTextField tpTF;

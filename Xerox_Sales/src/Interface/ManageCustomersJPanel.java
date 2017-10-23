@@ -6,7 +6,10 @@
 package Interface;
 
 import Business.Business;
+import Business.Customer;
+import Business.Market.Market;
 import Business.Person.Person;
+import Market_ui.UpdateMarket;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -32,6 +35,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.person=  person;
         this.business= business;
+        nameTextField.setText(person.getName());
        
     }
 
@@ -151,9 +155,30 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void ServeCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ServeCustomerButtonActionPerformed
+   boolean a=false;
+        for (Market market : business.getMarketList().getMarketList()) {
+            for (Customer customer : market.getCustomerList()) {
+                if(customerNameTextField.getText().equals(customer.getName()))
+                {   a=true;
+                          ServeCustomerJPanel customerPanel= new ServeCustomerJPanel(userProcessContainer,business, customer, person);
+        userProcessContainer.add("ManageSupplierAdministrative", customerPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+                }
+               
+                
+            }
+            
+        }
+        if(!a){
+             
+                
+                    JOptionPane.showMessageDialog(null, "Please Enter valid customer name");
+                
+        }
         
              
-      
+
       
         
       

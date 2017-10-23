@@ -26,7 +26,7 @@ public class OrderList {
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
     }
-     public Order addOrder()
+     public Order addOrder() 
     {
         Order order= new Order();
          orderList.add(order);

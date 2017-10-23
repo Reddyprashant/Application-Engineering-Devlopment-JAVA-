@@ -81,6 +81,6 @@ public class MarketOffer {
     @Override
     public String toString()
     {
-        return this.marketOfferId;
+        return marketOfferId;
     }
 }

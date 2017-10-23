@@ -47,5 +47,9 @@ public class OrderItem {
         this.paidPrice = paidPrice;
     }
     
-    
+    public  int orderItemTotal()
+    {
+        int totalPrice = getQuantity()*getPaidPrice();
+        return totalPrice;
+    }
 }
