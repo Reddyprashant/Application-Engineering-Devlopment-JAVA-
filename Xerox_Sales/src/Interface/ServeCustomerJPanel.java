@@ -125,7 +125,12 @@ private Person person;
             }
         });
 
-        logoutButton.setText("Logout");
+        logoutButton.setText("<Back");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         viewCustomerHistoryButton.setText("View Customer History");
 
@@ -221,18 +226,25 @@ private Person person;
     }//GEN-LAST:event_bookCustomerOrderActionPerformed
 
     private void checkOrderStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOrderStatusButtonActionPerformed
-       CheckOrderStatusJPanel cosjp=new CheckOrderStatusJPanel(userProcessContainer);
+       CheckOrderStatusJPanel cosjp=new CheckOrderStatusJPanel(userProcessContainer, business, person, customer);
        userProcessContainer.add("ManageSupplierAdministrative", cosjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_checkOrderStatusButtonActionPerformed
 
     private void browseProductCatalogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseProductCatalogueButtonActionPerformed
-       BrowseProductCatalogueJpanel bpcjp=new BrowseProductCatalogueJpanel(userProcessContainer);
+       BrowseProductCatalogueJpanel bpcjp=new BrowseProductCatalogueJpanel(userProcessContainer,business,person);
        userProcessContainer.add("ManageSupplierAdministrative", bpcjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_browseProductCatalogueButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+          userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

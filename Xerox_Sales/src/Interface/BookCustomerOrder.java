@@ -21,6 +21,7 @@ import Market_ui.UpdateMarketOffer;
 import UserInterface.SupplierRole.ViewProductDetailJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -87,6 +88,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         txtSearchKeyWord = new javax.swing.JTextField();
         txtNewQuantity = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        backBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(750, 511));
@@ -227,6 +229,14 @@ public class BookCustomerOrder extends javax.swing.JPanel {
 
         jLabel3.setText("Welcome To Please Buy !");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 150, 30));
+
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateTable()
@@ -417,8 +427,15 @@ public void refreshOrderTable()
           orders.setCustomer(customer);
           orders.setPerson(person);
           //orders.setOrderId(TOOL_TIP_TEXT_KEY);
-          orders.setStatus("In Transit");
-          //orders.setExpectedDeliveryDate(expectedDeliveryDate);
+          Date dt = new Date();
+    Calendar c = Calendar.getInstance(); 
+    c.setTime(dt); 
+    c.add(Calendar.DATE, 4);
+    dt = c.getTime();
+    orders.setExpectedDeliveryDate(dt);
+          
+          //orders.setStatus("In Transit");
+          
           JOptionPane.showMessageDialog(null,"order placed successfully");
           order = new Order();
           refreshOrderTable();
@@ -494,9 +511,17 @@ public void refreshOrderTable()
                     
     }//GEN-LAST:event_btnRemoveOrderItemActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+          userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backBtnActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addtoCartButton6;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnModifyQuantity;

@@ -73,7 +73,7 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = statusreturn();
     }
 
     public Date getOrderDate() {
@@ -121,5 +121,21 @@ public class Order {
         }
         return totalPriceOrder;
     }
-    
+    public String statusreturn()
+    {
+        if(orderDate.equals(new Date()))
+        {
+            return("Processing");
+        }
+        else if(expectedDeliveryDate.after(orderDate))
+        {
+            return("Shipping");
+        }
+        else if(expectedDeliveryDate.before(new Date()))
+        {
+            return("Delivered");
+        }
+        return null;
+                
+    }
 }

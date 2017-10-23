@@ -6,7 +6,6 @@
 package Interface;
 
 import Business.Business;
-import Business.Customer;
 import Business.Order.Order;
 import Business.Person.Person;
 import java.awt.CardLayout;
@@ -17,27 +16,45 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raj
  */
-public class CheckOrderStatusJPanel extends javax.swing.JPanel {
+public class TotalOrderStatus extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageCustomersJPanel
      */
     private JPanel userProcessContainer;
     private Business business;
-private Customer customer;
-private Person person;
+    private Person person;
 
-    CheckOrderStatusJPanel(JPanel userProcessContainer,Business business,Person person,Customer customer) {
+    
+
+    TotalOrderStatus(JPanel userProcessContainer, Business business, Person person) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.person=person;
-        this.customer=customer;
         nameTextField.setText(person.getName());
-        custTxt.setText(customer.getName());
-        populateTable();
+        populateTotalOrderTable();
     }
 
+    private void populateTotalOrderTable(){
+        DefaultTableModel dtm = (DefaultTableModel)totalOrderTable.getModel();
+        dtm.setRowCount(0);
+        for(Order o: person.getOrderList())
+        {
+            Object row[] = new Object[7];        
+            row[0] = o;
+            row[1] = o.getOrderDate();
+            row[2] = o.getExpectedDeliveryDate();
+            row[3] = o.getStatus();
+            row[4] = o.getCustomer().getName();
+                     
+                                                  
+                    
+                    dtm.addRow(row); 
+        }
+        }
+            
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,10 +76,9 @@ private Person person;
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        orderStatusTable = new javax.swing.JTable();
+        totalOrderTable = new javax.swing.JTable();
+        logoutButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        custTxt = new javax.swing.JTextField();
 
         jLabel4.setText("jLabel4");
 
@@ -95,25 +111,19 @@ private Person person;
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Order List");
+        jLabel5.setText("Total Order List");
 
-        orderStatusTable.setModel(new javax.swing.table.DefaultTableModel(
+        totalOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Order Date", "expected Delivery Date", "Status"
+                "Order ID", "Order Date", "Expected Delivery Date", "Status", "Customer Name"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        ));
+        jScrollPane1.setViewportView(totalOrderTable);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(orderStatusTable);
+        logoutButton.setText("Logout");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -122,34 +132,29 @@ private Person person;
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Customer Name:");
-
-        custTxt.setEditable(false);
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UserNameJLabel)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addComponent(custTxt))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(384, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoutButton)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(UserNameJLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                .addGap(41, 41, 41))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
-                    .addComponent(backButton)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(backButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
@@ -161,19 +166,16 @@ private Person person;
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addComponent(logoutButton)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UserNameJLabel)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(custTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel5)
-                .addGap(28, 28, 28)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(backButton))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -216,24 +218,6 @@ private Person person;
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void populateTable()
-    {
-           DefaultTableModel dtm = (DefaultTableModel)orderStatusTable.getModel();
-        dtm.setRowCount(0);
-        for (Order order : person.getOrderList()) {
-            if(order.getCustomer().getName().equalsIgnoreCase(customer.getName()))
-            {
-                Object row[] = new Object[4];
-                    row[0] = order;
-                    row[1] = order.getOrderDate();
-                    row[2]= order.getExpectedDeliveryDate();
-                    row[3]= order.getStatus();
-              
- 
-                    dtm.addRow(row);  
-            }
-        }
-    }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -245,7 +229,6 @@ private Person person;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserNameJLabel;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField custTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -253,11 +236,11 @@ private Person person;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTable orderStatusTable;
+    private javax.swing.JTable totalOrderTable;
     // End of variables declaration//GEN-END:variables
 }

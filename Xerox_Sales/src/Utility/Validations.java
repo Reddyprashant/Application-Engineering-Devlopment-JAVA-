@@ -8,6 +8,7 @@ package Utility;
 import Business.Person.Person;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,5 +37,18 @@ public class Validations {
 
 		return hash.toString();
 	}
+    
+//    public static nameValidation(String input)
+//            
+//    {
+//        char c = evt.getKeyChar();
+//              if (!((c >= '0') && (c <= '9') ||
+//         (c == evt.VK_BACK_SPACE) ||
+//         (c == evt.VK_DELETE))) {
+//       JOptionPane.showMessageDialog(null, " Please Enter Integer value");
+//      
+//       salaryTxt.setText("");
+//      }
+//    }
     
 }

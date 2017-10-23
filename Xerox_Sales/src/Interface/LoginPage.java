@@ -64,8 +64,6 @@ public class LoginPage extends javax.swing.JPanel {
         usernameTextField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         passwordTextField = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        roleComboBox = new javax.swing.JComboBox<>();
 
         jLabel4.setText("jLabel4");
 
@@ -92,12 +90,6 @@ public class LoginPage extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Role:");
-
-        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "System Admin", "Sales Person" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,14 +103,12 @@ public class LoginPage extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel5))
+                                .addComponent(jLabel2))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(usernameTextField)
-                                .addComponent(passwordTextField)
-                                .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(666, Short.MAX_VALUE))
+                                .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                                .addComponent(passwordTextField)))))
+                .addContainerGap(686, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,13 +123,9 @@ public class LoginPage extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addComponent(loginButton)
-                .addContainerGap(527, Short.MAX_VALUE))
+                .addContainerGap(630, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -150,6 +136,12 @@ public class LoginPage extends javax.swing.JPanel {
        Person person = business.getEmployeeDirectory().isValidUser( usernameTextField.getText(), passwordTextField.getText());
        usernameTextField.setText("");
         passwordTextField.setText("");
+        
+//        if(usernameTextField.getText()==null || passwordTextField.getText()==null)
+//        {
+//            JOptionPane.showMessageDialog(null, "Plese enter the values to Login", "Warning", JOptionPane.WARNING_MESSAGE);
+//            //return;
+//        }
         
         if(person!=null)
         {
@@ -162,9 +154,9 @@ public class LoginPage extends javax.swing.JPanel {
                 
             
         }
-            else if(person.getRole().equalsIgnoreCase("Sales person"))
+         else if(person.getRole().equalsIgnoreCase("Sales person"))
         {
-                    ManageCustomersJPanel adminPage = new ManageCustomersJPanel(userProcessContainer, business,person);
+        ManageCustomersJPanel adminPage = new ManageCustomersJPanel(userProcessContainer, business,person);
         userProcessContainer.add("AdminPage",adminPage);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -179,6 +171,12 @@ public class LoginPage extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Account not available", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
 
@@ -187,11 +185,9 @@ public class LoginPage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordTextField;
-    private javax.swing.JComboBox<String> roleComboBox;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
