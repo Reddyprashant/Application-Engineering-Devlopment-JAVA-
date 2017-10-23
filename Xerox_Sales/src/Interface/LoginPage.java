@@ -137,13 +137,13 @@ public class LoginPage extends javax.swing.JPanel {
        usernameTextField.setText("");
         passwordTextField.setText("");
         
-        if(usernameTextField.getText()==null || passwordTextField.getText()==null)
-        {
-            JOptionPane.showMessageDialog(null, "Plese enter the values to Login", "Warning", JOptionPane.WARNING_MESSAGE);
-            //return;
-        }
+//        if(usernameTextField.getText()==null || passwordTextField.getText()==null)
+//        {
+//            JOptionPane.showMessageDialog(null, "Plese enter the values to Login", "Warning", JOptionPane.WARNING_MESSAGE);
+//            //return;
+//        }
         
-        else if(person!=null)
+        if(person!=null)
         {
             if(person.getRole().equalsIgnoreCase("Admin"))
         {
@@ -154,9 +154,9 @@ public class LoginPage extends javax.swing.JPanel {
                 
             
         }
-            else if(person.getRole().equalsIgnoreCase("Sales person"))
+         else if(person.getRole().equalsIgnoreCase("Sales person"))
         {
-                    ManageCustomersJPanel adminPage = new ManageCustomersJPanel(userProcessContainer, business,person);
+        ManageCustomersJPanel adminPage = new ManageCustomersJPanel(userProcessContainer, business,person);
         userProcessContainer.add("AdminPage",adminPage);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

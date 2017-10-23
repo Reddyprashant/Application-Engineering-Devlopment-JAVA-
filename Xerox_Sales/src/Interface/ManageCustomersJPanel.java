@@ -67,6 +67,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         ReviewSalesOrderHistoryButton = new javax.swing.JButton();
         ReviewSaleCommissionButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        totalOrderList = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -138,7 +139,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 28, -1, -1));
 
-        totalOrderList.setText("View All Orders");
+        totalOrderList.setText("View Orders");
         totalOrderList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalOrderListActionPerformed(evt);
@@ -192,7 +193,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
     private void totalOrderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalOrderListActionPerformed
         // TODO add your handling code here:
         TotalOrderStatus tos= new TotalOrderStatus(userProcessContainer,business,person);
-        userProcessContainer.add("ManageSupplierAdministrative", tos);
+        userProcessContainer.add("TotalOrderStatus", tos);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_totalOrderListActionPerformed
