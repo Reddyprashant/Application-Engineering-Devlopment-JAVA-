@@ -5,8 +5,13 @@
  */
 package Interface;
 
+import Business.Business;
+import Business.Person.Person;
+import Business.Product.Product;
+import Business.Supplier.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,12 +23,50 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
      * Creates new form ManageCustomersJPanel
      */
     private JPanel userProcessContainer;
+    private Business business;
+    //private JPanel userProcessContainer;
+    private Person person;
     
-
-    BrowseProductCatalogueJpanel(JPanel userProcessContainer) {
+    BrowseProductCatalogueJpanel(JPanel userProcessContainer,Business business,Person person) {
        initComponents();
        this.userProcessContainer=userProcessContainer;
+       this.business=business;
+       this.person=person;
+       nameTextField.setText(person.getName());
+       catalogueComboBox.removeAllItems();
+       for (Supplier s : business.getSupplierDirectory().getSupplierList()) {
+            catalogueComboBox.addItem(s);
+            
+        }
+        populateTable();
     }
+
+    public void populateTable(){
+        Supplier supplier= (Supplier)catalogueComboBox.getSelectedItem();
+        DefaultTableModel dtm = (DefaultTableModel)productTable.getModel();
+        dtm.setRowCount(0);
+        //for(Supplier s: business.getSupplierDirectory().getSupplierList())
+        //{
+            for(Product p: supplier.getProductCatalog().getProductList())
+            {
+               // if(supplier.equals(supplier.getSupplierName()))
+                
+                    Object row[] = new Object[6];
+                    row[0] = p;
+                    row[1] = p.getProductId();
+                    row[2]=  p.getPrice();
+                    row[3]= p.getAvailability();
+                    
+ 
+                    dtm.addRow(row);  
+                
+            }
+        }
+    
+
+   
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,84 +87,55 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         logoutButton = new javax.swing.JButton();
-        findTextField = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        catalogueComboBox = new javax.swing.JComboBox<>();
-        viewCatalogueonTableButton = new javax.swing.JButton();
-        viewDetailsButton = new javax.swing.JButton();
-        findButton = new javax.swing.JButton();
+        catalogueComboBox = new javax.swing.JComboBox();
         backButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
 
         jLabel4.setText("jLabel4");
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Xerox Sales Console ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 2, -1, 57));
 
         UserNameJLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         UserNameJLabel.setForeground(new java.awt.Color(255, 255, 255));
         UserNameJLabel.setText("Sales Person's Name:");
+        jPanel1.add(UserNameJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 65, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 2, 112, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Activity: Browse Product Catalogue");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 65, 377, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 2, 112, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 2, 112, -1));
 
         nameTextField.setBackground(new java.awt.Color(51, 51, 51));
         nameTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nameTextField.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 66, 106, -1));
 
         logoutButton.setText("Logout");
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(668, 11, -1, -1));
 
-        findTextField.setBackground(new java.awt.Color(51, 51, 51));
-        findTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        findTextField.setForeground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Product ID", "Product Name", "Target Price", "Description"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        viewCatalogueonTableButton.setText("View Catalogue Info");
-
-        viewDetailsButton.setText("View Details");
-        viewDetailsButton.addActionListener(new java.awt.event.ActionListener() {
+        catalogueComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewDetailsButtonActionPerformed(evt);
+                catalogueComboBoxActionPerformed(evt);
             }
         });
-
-        findButton.setText("Find");
+        jPanel1.add(catalogueComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 210, -1));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -129,90 +143,19 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(viewDetailsButton))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(catalogueComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(viewCatalogueonTableButton)
-                                .addGap(139, 139, 139)
-                                .addComponent(findButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findTextField)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(79, 79, 79))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(logoutButton)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(UserNameJLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(logoutButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(UserNameJLabel)))
-                .addGap(81, 81, 81)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(catalogueComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewCatalogueonTableButton)
-                    .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(findButton))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewDetailsButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addContainerGap())
-        );
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Name", "Product ID", "Product Price", "Availability"
+            }
+        ));
+        jScrollPane1.setViewportView(productTable);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 730, 250));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -223,20 +166,16 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);    
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void viewDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsButtonActionPerformed
-       //ViewDetailsJPanel vdjp=new ViewDetailsJPanel(userProcessContainer);
-       //userProcessContainer.add("ManageSupplierAdministrative", vdjp);
-       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
-    }//GEN-LAST:event_viewDetailsButtonActionPerformed
+    private void catalogueComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catalogueComboBoxActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_catalogueComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserNameJLabel;
     private javax.swing.JButton backButton;
-    private javax.swing.JComboBox<String> catalogueComboBox;
-    private javax.swing.JButton findButton;
-    private javax.swing.JTextField findTextField;
+    private javax.swing.JComboBox catalogueComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -244,12 +183,9 @@ public class BrowseProductCatalogueJpanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JButton viewCatalogueonTableButton;
-    private javax.swing.JButton viewDetailsButton;
+    private javax.swing.JTable productTable;
     // End of variables declaration//GEN-END:variables
 }
