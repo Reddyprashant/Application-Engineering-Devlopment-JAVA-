@@ -34,4 +34,9 @@ public class MarketOfferCatalog {
         marketOfferList.add(marketOffer);
         return marketOffer;
     }
+ 
+     public void deleteMarketOffer(MarketOffer marketOffer)
+    {
+        marketOfferList.remove(marketOffer);
+    }
 }

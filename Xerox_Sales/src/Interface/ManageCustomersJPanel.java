@@ -67,7 +67,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         ReviewSalesOrderHistoryButton = new javax.swing.JButton();
         ReviewSaleCommissionButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -132,27 +131,15 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         jPanel1.add(ReviewSaleCommissionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 444, -1, -1));
 
         logoutButton.setText("Logout");
-        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 28, -1, -1));
-
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 437, -1, -1));
+        jPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 28, -1, -1));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-
-        
-        
-    }//GEN-LAST:event_backButtonActionPerformed
 
     private void ServeCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ServeCustomerButtonActionPerformed
    boolean a=false;
@@ -188,13 +175,19 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_ReviewSalesOrderHistoryButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+          userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ReviewSaleCommissionButton;
     private javax.swing.JButton ReviewSalesOrderHistoryButton;
     private javax.swing.JButton ServeCustomerButton;
     private javax.swing.JLabel UserNameJLabel;
-    private javax.swing.JButton backButton;
     private javax.swing.JTextField customerNameTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

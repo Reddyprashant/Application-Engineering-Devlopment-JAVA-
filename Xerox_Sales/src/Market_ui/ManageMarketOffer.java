@@ -8,6 +8,7 @@ package Market_ui;
 import Business.Business;
 import Business.Market.Market;
 import Business.Market.MarketOffer;
+import Business.Supplier.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -112,6 +113,11 @@ public class ManageMarketOffer extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 19, -1, -1));
 
         jButton1.setText("Delete Market");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 536, 180, 51));
 
         backBtn.setText("Back");
@@ -182,6 +188,21 @@ public void populateTable()
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                int selectedrow=marketOfferTable.getSelectedRow();
+   if(selectedrow>=0)
+        {    
+            JOptionPane.showMessageDialog(null,"Are you sure you want to delete this entry?");
+            MarketOffer marketOffer=(MarketOffer)marketOfferTable.getValueAt(selectedrow,0);
+            business.getMarketOfferCatalog().deleteMarketOffer(marketOffer);
+            populateTable();
+             JOptionPane.showMessageDialog(null,"Person deleted");
+        }
+       else
+            JOptionPane.showMessageDialog(null,"Please select a row first");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

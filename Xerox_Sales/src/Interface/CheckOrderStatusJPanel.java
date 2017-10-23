@@ -5,8 +5,13 @@
  */
 package Interface;
 
+import Business.Business;
+import Business.Customer;
+import Business.Order.Order;
+import Business.Person.Person;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,11 +23,19 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
      * Creates new form ManageCustomersJPanel
      */
     private JPanel userProcessContainer;
-    
+    private Business business;
+private Customer customer;
+private Person person;
 
-    CheckOrderStatusJPanel(JPanel userProcessContainer) {
+    CheckOrderStatusJPanel(JPanel userProcessContainer,Business business,Person person,Customer customer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.business=business;
+        this.person=person;
+        this.customer=customer;
+        nameTextField.setText(person.getName());
+        custTxt.setText(customer.getName());
+        populateTable();
     }
 
     /**
@@ -40,21 +53,16 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        beginTimeTF = new javax.swing.JTextField();
-        endTimeTF = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        viewDetailsButton = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        findButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         UserNameJLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        logoutButton = new javax.swing.JButton();
+        orderStatusTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        custTxt = new javax.swing.JTextField();
 
         jLabel4.setText("jLabel4");
 
@@ -68,31 +76,6 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-
-        beginTimeTF.setBackground(new java.awt.Color(51, 51, 51));
-        beginTimeTF.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        beginTimeTF.setForeground(new java.awt.Color(255, 255, 255));
-
-        endTimeTF.setBackground(new java.awt.Color(51, 51, 51));
-        endTimeTF.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        endTimeTF.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("To");
-
-        viewDetailsButton.setText("View Details");
-        viewDetailsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewDetailsButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Find by Time Frame");
-
-        findButton.setText("Find");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,17 +97,23 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Order List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        orderStatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Date Started", "Date Completed", "Status", "Action"
+                "Order ID", "Order Date", "expected Delivery Date", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        logoutButton.setText("Logout");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(orderStatusTable);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,44 +122,34 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Customer Name:");
+
+        custTxt.setEditable(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logoutButton)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(UserNameJLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewDetailsButton)))
-                .addGap(41, 41, 41))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UserNameJLabel)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(findButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(beginTimeTF)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(endTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(custTxt))
+                .addGap(40, 40, 40))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addComponent(backButton)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
@@ -182,25 +161,19 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(logoutButton)
-                .addGap(52, 52, 52)
+                .addGap(81, 81, 81)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UserNameJLabel)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findButton)
-                    .addComponent(beginTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(endTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(20, 20, 20)
+                    .addComponent(custTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel5)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewDetailsButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(backButton))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -243,14 +216,24 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void viewDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsButtonActionPerformed
-       //ViewDetailsJPanel vdjp= new ViewDetailsJPanel(userProcessContainer);
-       //userProcessContainer.add("ManageSupplierAdministrative", vdjp);
-       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
-       
-    }//GEN-LAST:event_viewDetailsButtonActionPerformed
-
+    public void populateTable()
+    {
+           DefaultTableModel dtm = (DefaultTableModel)orderStatusTable.getModel();
+        dtm.setRowCount(0);
+        for (Order order : person.getOrderList()) {
+            if(order.getCustomer().getName().equalsIgnoreCase(customer.getName()))
+            {
+                Object row[] = new Object[4];
+                    row[0] = order;
+                    row[1] = order.getOrderDate();
+                    row[2]= order.getExpectedDeliveryDate();
+                    row[3]= order.getStatus();
+              
+ 
+                    dtm.addRow(row);  
+            }
+        }
+    }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -262,9 +245,7 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserNameJLabel;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField beginTimeTF;
-    private javax.swing.JTextField endTimeTF;
-    private javax.swing.JButton findButton;
+    private javax.swing.JTextField custTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -273,13 +254,10 @@ public class CheckOrderStatusJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JButton viewDetailsButton;
+    private javax.swing.JTable orderStatusTable;
     // End of variables declaration//GEN-END:variables
 }
