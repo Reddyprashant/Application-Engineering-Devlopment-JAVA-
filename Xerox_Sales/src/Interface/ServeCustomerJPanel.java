@@ -228,7 +228,7 @@ private Person person;
     }//GEN-LAST:event_checkOrderStatusButtonActionPerformed
 
     private void browseProductCatalogueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseProductCatalogueButtonActionPerformed
-       BrowseProductCatalogueJpanel bpcjp=new BrowseProductCatalogueJpanel(userProcessContainer);
+       BrowseProductCatalogueJpanel bpcjp=new BrowseProductCatalogueJpanel(userProcessContainer,business,person);
        userProcessContainer.add("ManageSupplierAdministrative", bpcjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);

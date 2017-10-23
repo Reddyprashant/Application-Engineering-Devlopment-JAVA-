@@ -68,6 +68,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         ReviewSaleCommissionButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        totalOrderList = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -142,6 +143,14 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 437, -1, -1));
 
+        totalOrderList.setText("View All Orders");
+        totalOrderList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalOrderListActionPerformed(evt);
+            }
+        });
+        jPanel1.add(totalOrderList, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, -1));
+
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,6 +197,14 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_ReviewSalesOrderHistoryButtonActionPerformed
 
+    private void totalOrderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalOrderListActionPerformed
+        // TODO add your handling code here:
+        TotalOrderStatus tos= new TotalOrderStatus(userProcessContainer,business,person);
+        userProcessContainer.add("ManageSupplierAdministrative", tos);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_totalOrderListActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ReviewSaleCommissionButton;
@@ -206,5 +223,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JButton totalOrderList;
     // End of variables declaration//GEN-END:variables
 }
