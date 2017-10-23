@@ -48,6 +48,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageMarket = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         manageOfferBtn = new javax.swing.JButton();
+        viewSalesButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -92,6 +93,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewSalesButton.setText("View Sales");
+        viewSalesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSalesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,8 +115,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(manageSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(manageMarket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageOfferBtn))))
-                .addContainerGap(295, Short.MAX_VALUE))
+                            .addComponent(manageOfferBtn)
+                            .addComponent(viewSalesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +137,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(manageOfferBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(viewSalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -171,6 +182,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOfferBtnActionPerformed
 
+    private void viewSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesButtonActionPerformed
+        ViewSalesWorkAreaJPanel vs= new ViewSalesWorkAreaJPanel(userProcessContainer, business, person);
+        userProcessContainer.add("ManageSupplierAdministrative", vs);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);// TODO add your handling code here:
+    }//GEN-LAST:event_viewSalesButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -180,5 +198,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton manageOfferBtn;
     private javax.swing.JButton managePerson;
     private javax.swing.JButton manageSupplier;
+    private javax.swing.JButton viewSalesButton;
     // End of variables declaration//GEN-END:variables
 }
