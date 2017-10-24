@@ -125,7 +125,7 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesActionPerformed
        MonitorSales ms= new MonitorSales(userProcessContainer, business, person);
-       userProcessContainer.add("ManageSupplierAdministrative",ms);
+       userProcessContainer.add("MonitorSales",ms);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
        
@@ -133,7 +133,7 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewSalesByPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesByPersonActionPerformed
        MonitorSalesByPerson msp=new MonitorSalesByPerson(userProcessContainer, business, person);
-       userProcessContainer.add("ManageSupplierAdministrative",msp);
+       userProcessContainer.add("MonitorSalesByPerson",msp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewSalesByPersonActionPerformed
@@ -147,7 +147,7 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
                TopProducts products=new TopProducts(userProcessContainer, business, person);
-       userProcessContainer.add("ManageSupplierAdministrative",products);
+       userProcessContainer.add("TopProducts",products);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed

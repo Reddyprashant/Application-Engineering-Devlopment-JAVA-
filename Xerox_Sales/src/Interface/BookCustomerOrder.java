@@ -435,11 +435,14 @@ public void refreshOrderTable()
        if(order.getOrderItemList().size()>0)
        {
            Order orders =business.getOrderList().addOrder();
-          orders=order;
-          person.getOrderList().add(orders);
+          //orders=order;
+         person.getOrderList().add(orders);
+            orders.setOrderItemList(order.getOrderItemList());
           orders.setOrderDate(new Date());
           orders.setCustomer(customer);
           orders.setPerson(person);
+          orders.setCommission(commission);
+          orders.setStatus("Shipping");
           //orders.setOrderId(TOOL_TIP_TEXT_KEY);
           Date dt = new Date();
     Calendar c = Calendar.getInstance(); 

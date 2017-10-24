@@ -102,11 +102,11 @@ private Person person;
 
             },
             new String [] {
-                "Order ID", "Order Date", "expected Delivery Date", "Status"
+                "Order ID", "Order Date", "expected Delivery Date", "Status", "Selling Price", "Target Price", "Profit/Loss"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -225,12 +225,14 @@ private Person person;
         for (Order order : person.getOrderList()) {
             if(order.getCustomer().getName().equalsIgnoreCase(customer.getName()))
             {
-                Object row[] = new Object[4];
+                Object row[] = new Object[8];
                     row[0] = order;
                     row[1] = order.getOrderDate();
                     row[2]= order.getExpectedDeliveryDate();
                     row[3]= order.getStatus();
-              
+                    row[4] = order.orderTotal();
+                    row[5]= order.orderTotalTargetPrice();
+                    row[6]= order.orderTotal()-order.orderTotalTargetPrice();
  
                     dtm.addRow(row);  
             }

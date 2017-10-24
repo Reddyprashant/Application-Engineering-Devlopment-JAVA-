@@ -41,12 +41,15 @@ public class TotalOrderStatus extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for(Order o: person.getOrderList())
         {
-            Object row[] = new Object[7];        
+            Object row[] = new Object[11];        
             row[0] = o;
             row[1] = o.getOrderDate();
             row[2] = o.getExpectedDeliveryDate();
             row[3] = o.getStatus();
             row[4] = o.getCustomer().getName();
+            row[5]= o.orderTotal();
+            row[6] = o.orderTotalTargetPrice();
+            row[7]= o.orderTotal()-o.orderTotalTargetPrice();
                      
                                                   
                     
@@ -117,7 +120,7 @@ public class TotalOrderStatus extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Order ID", "Order Date", "Expected Delivery Date", "Status", "Customer Name"
+                "Order ID", "Order Date", "Expected Delivery Date", "Status", "Customer Name", "Selling price", "Target Price", "Profit/Loss"
             }
         ));
         jScrollPane1.setViewportView(totalOrderTable);

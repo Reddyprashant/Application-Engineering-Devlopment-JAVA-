@@ -157,7 +157,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
                 if(customerNameTextField.getText().equals(customer.getName()))
                 {   a=true;
                           ServeCustomerJPanel customerPanel= new ServeCustomerJPanel(userProcessContainer,business, customer, person);
-        userProcessContainer.add("ManageSupplierAdministrative", customerPanel);
+        userProcessContainer.add("ServeCustomerJPanel", customerPanel);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
                 }

@@ -49,6 +49,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         manageOfferBtn = new javax.swing.JButton();
         perBtn = new javax.swing.JButton();
+        totalOrderList = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -100,6 +101,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        totalOrderList.setText("Total Order List");
+        totalOrderList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalOrderListActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,22 +118,23 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
+                        .addGap(254, 254, 254)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(manageMarket, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(manageSupplier, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(managePerson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(manageOfferBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(perBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(298, 298, 298))
+                            .addComponent(perBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(totalOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(managePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(manageSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,6 +146,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(manageOfferBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(perBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(totalOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -145,29 +156,29 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void managePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePersonActionPerformed
        PersonJPanelForm pjp= new PersonJPanelForm(userProcessContainer, business);
-       userProcessContainer.add("ManageSupplierAdministrative", pjp);
+       userProcessContainer.add("PersonJPanelForm", pjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_managePersonActionPerformed
 
     private void manageSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSupplierActionPerformed
        SupplierJPanelForm spjp= new SupplierJPanelForm(userProcessContainer, business);
-       userProcessContainer.add("ManageSupplierAdministrative", spjp);
+       userProcessContainer.add("SupplierJPanelForm", spjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageSupplierActionPerformed
 
     private void manageMarketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageMarketActionPerformed
         MarketJPanelForm mjp= new MarketJPanelForm(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", mjp);
+        userProcessContainer.add("MarketJPanelForm", mjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageMarketActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CustomerJPanelForm mjp= new CustomerJPanelForm(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", mjp);
+        CustomerJPanelForm cjp= new CustomerJPanelForm(userProcessContainer, business);
+        userProcessContainer.add("CustomerJPanelForm", cjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -175,7 +186,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageOfferBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOfferBtnActionPerformed
         // TODO add your handling code here:
                ManageMarketOffer marketOffer= new ManageMarketOffer(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", marketOffer);
+        userProcessContainer.add("ManageMarketOffer", marketOffer);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOfferBtnActionPerformed
@@ -183,10 +194,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void perBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perBtnActionPerformed
         // TODO add your handling code here:
         ViewSalesWorkAreaJPanel monitor= new ViewSalesWorkAreaJPanel(userProcessContainer, business, person);
-        userProcessContainer.add("ManageSupplierAdministrative", monitor);
+        userProcessContainer.add("ViewSalesWorkAreaJPanel", monitor);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_perBtnActionPerformed
+
+    private void totalOrderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalOrderListActionPerformed
+        TotalOrderListJPanel toljp= new TotalOrderListJPanel(userProcessContainer, business, person);
+        userProcessContainer.add("TotalOrderListJPanel",toljp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_totalOrderListActionPerformed
 
                            
 
@@ -201,5 +219,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton managePerson;
     private javax.swing.JButton manageSupplier;
     private javax.swing.JButton perBtn;
+    private javax.swing.JButton totalOrderList;
     // End of variables declaration//GEN-END:variables
 }
