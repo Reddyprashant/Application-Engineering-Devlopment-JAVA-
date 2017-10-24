@@ -134,14 +134,9 @@ public class LoginPage extends javax.swing.JPanel {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
        Supplier supplier = business.getSupplierDirectory().isValidUser(usernameTextField.getText(), passwordTextField.getText());
        Person person = business.getEmployeeDirectory().isValidUser( usernameTextField.getText(), passwordTextField.getText());
-       usernameTextField.setText("");
-        passwordTextField.setText("");
+       
         
-//        if(usernameTextField.getText()==null || passwordTextField.getText()==null)
-//        {
-//            JOptionPane.showMessageDialog(null, "Plese enter the values to Login", "Warning", JOptionPane.WARNING_MESSAGE);
-//            //return;
-//        }
+ 
         
         if(person!=null)
         {
@@ -172,11 +167,18 @@ public class LoginPage extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         }
         
+        else if(usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Plese enter the values to Login", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         else
         {
             JOptionPane.showMessageDialog(null, "Account not available", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        usernameTextField.setText("");
+        passwordTextField.setText("");
     }//GEN-LAST:event_loginButtonActionPerformed
 
 

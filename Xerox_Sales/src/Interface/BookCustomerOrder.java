@@ -42,6 +42,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
     private Person person;
     private Order order;
     private boolean isCheckedOut = false;
+    private double commission=0;
     /** Creates new form BrowseProducts */
     public BookCustomerOrder(JPanel userProcessContainer,Business business, Customer customer, Person person) {
         initComponents();
@@ -88,6 +89,10 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         txtNewQuantity = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        amountTxt = new javax.swing.JTextField();
+        comTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(750, 511));
@@ -227,6 +232,14 @@ public class BookCustomerOrder extends javax.swing.JPanel {
             }
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
+        add(amountTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 80, -1));
+        add(comTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 340, 90, -1));
+
+        jLabel4.setText("Commission");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, -1, -1));
+
+        jLabel8.setText("Payable Amount");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateTable()
@@ -290,7 +303,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
              
                 
                     JOptionPane.showMessageDialog(null, "please enter valid product name");
-                
+                 return;
         }
         
     }
@@ -365,10 +378,12 @@ public class BookCustomerOrder extends javax.swing.JPanel {
                     alreadyPresent=true;
                     populateTable();
                     refreshOrderTable();
+                    
                     break;
                     
                }
             }
+            
             if(!alreadyPresent){
                 
              int oldAvail = p.getAvailability();
@@ -380,9 +395,10 @@ public class BookCustomerOrder extends javax.swing.JPanel {
                orderItem.setPaidPrice(salesPrice);
                populateTable();
                refreshOrderTable();
+               
             }
             
-
+           
        }
      else{
                 
@@ -409,6 +425,9 @@ public void refreshOrderTable()
                       txtSalesPrice.setText("");
            quantitySpinner.setValue(0);
     }
+     amountTxt.setText(String.valueOf(order.orderTotal()));
+               commission=((order.orderTotal()-order.orderTotalTargetPrice())*0.03);
+          comTxt.setText(Double.toString(commission));
                
 }
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
@@ -432,10 +451,12 @@ public void refreshOrderTable()
           //orders.setStatus("In Transit");
           
           JOptionPane.showMessageDialog(null,"order placed successfully");
-          order = new Order();
+        
           refreshOrderTable();
           populateTable();
           isCheckedOut= true;
+
+            order = new Order();
        }
        else
        {
@@ -516,17 +537,21 @@ public void refreshOrderTable()
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addtoCartButton6;
+    private javax.swing.JTextField amountTxt;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnModifyQuantity;
     private javax.swing.JButton btnRemoveOrderItem;
     private javax.swing.JButton btnSearchProduct;
+    private javax.swing.JTextField comTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable orderTable;

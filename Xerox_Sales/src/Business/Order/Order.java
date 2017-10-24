@@ -25,6 +25,15 @@ public class Order {
     //private Date issueDate;
     private Person person;
     private Customer customer;
+    private double commission;
+
+    public double getCommission() {
+        return commission;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
 
         public Order()
     {
@@ -117,7 +126,7 @@ public class Order {
         double totalPriceOrder = 0;
         for(OrderItem orderItem:orderItemList){
             
-        totalPriceOrder =+ orderItem.orderItemTotal();
+        totalPriceOrder = totalPriceOrder + orderItem.orderItemTotal();
         }
         return totalPriceOrder;
     }
