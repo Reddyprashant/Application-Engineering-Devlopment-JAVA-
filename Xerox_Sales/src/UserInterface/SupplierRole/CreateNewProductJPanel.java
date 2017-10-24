@@ -43,13 +43,13 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        priceField = new javax.swing.JTextField();
         createButton = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         nameField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         availTxt = new javax.swing.JTextField();
+        priceField = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,19 +60,6 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Product Price:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 180, 110, 30));
-
-        priceField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        priceField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceFieldActionPerformed(evt);
-            }
-        });
-        priceField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                priceFieldKeyPressed(evt);
-            }
-        });
-        add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 160, 30));
 
         createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         createButton.setText("Add Product");
@@ -97,11 +84,6 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 30));
 
         nameField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        nameField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameField1ActionPerformed(evt);
-            }
-        });
         nameField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameField1KeyPressed(evt);
@@ -119,6 +101,13 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
             }
         });
         add(availTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 160, -1));
+
+        priceField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                priceFieldKeyPressed(evt);
+            }
+        });
+        add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
     // TODO add your handling code here:
@@ -147,11 +136,6 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         backAction();
     }//GEN-LAST:event_backButton1ActionPerformed
 
-    private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
-        // TODO add your handling code here:
-        Validations.ToInteger(evt);
-    }//GEN-LAST:event_priceFieldKeyPressed
-
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_availTxtKeyPressed
@@ -164,6 +148,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Validations.ToAlphabet(evt);
     }//GEN-LAST:event_nameField1KeyPressed
+
+    private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
+        // TODO add your handling code here:
+        Validations.ToInteger(evt);
+    }//GEN-LAST:event_priceFieldKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availTxt;
