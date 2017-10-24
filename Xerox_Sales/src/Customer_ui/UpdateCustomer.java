@@ -199,13 +199,20 @@ public class UpdateCustomer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-      res.setName(nameTextField.getText());
+      try
+      {
+        res.setName(nameTextField.getText());
       //res.setMarketId(marketIdTextField.getText());
       res.setAddress(addTxt.getText());
       
       
         
       JOptionPane.showMessageDialog(updateButton,"Updated succesfully");
+      }
+      catch (Exception e)
+      {
+          JOptionPane.showMessageDialog(null,"Enter the values");
+      }
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

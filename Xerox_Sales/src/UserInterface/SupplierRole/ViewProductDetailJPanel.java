@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
 import Utility.Validations;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -142,10 +143,17 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
+        try
+        {
        nameField.setEditable(true);
        priceField.setEditable(true);
        saveButton.setEnabled(true);
        availTxt.setEnabled(true);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"enter the values");
+        }
 }//GEN-LAST:event_createButtonActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
@@ -174,11 +182,13 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
+        priceField.setText("");
     }//GEN-LAST:event_priceFieldKeyPressed
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
+        availTxt.setText("");
     }//GEN-LAST:event_availTxtKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -111,10 +111,17 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void addjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addjButton1ActionPerformed
         // TODO add your handling code here:
+        try{
         Supplier supplier = supplierDirectory.addSupplier();
         supplier.setSupplierName(namejTextField1.getText());
         
         JOptionPane.showMessageDialog(null, "Supplier successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception e)
+        {
+          JOptionPane.showMessageDialog(null, "Enter the Supplier Name", "Warning", JOptionPane.INFORMATION_MESSAGE);  
+        }
+                
     }//GEN-LAST:event_addjButton1ActionPerformed
 
     private void backjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton2ActionPerformed

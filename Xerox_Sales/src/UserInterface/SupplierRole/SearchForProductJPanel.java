@@ -10,6 +10,7 @@ package UserInterface.SupplierRole;
 import Business.Product.Product;
 import Business.Supplier.Supplier;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -79,6 +80,8 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+        try
+        {
         Product product;
         String productId = (idField.getText());
         product = supplier.getProductCatalog().searchProduct(productId);
@@ -86,6 +89,11 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
         userProcessContainer.add("ViewProductDetailJPanelSupplier", vpdjp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Enter Product name", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }
         
 }//GEN-LAST:event_searchButtonActionPerformed
 

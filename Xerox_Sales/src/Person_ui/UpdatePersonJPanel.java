@@ -213,7 +213,10 @@ try{
         res.setName(nameTextField.getText());
       res.setEmpId(personIdTextField.getText());
       res.setUserName(usernameTextField.getText());
+      if(!(res.getPassword().equals(passwordTextField.getText())))
+                {
       res.setPassword(passwordTextField.getText());
+                }
        String role = (String)roleDropDown.getSelectedItem();
        
       if(res.getRole()!=role)

@@ -111,6 +111,8 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
     // TODO add your handling code here:
+    try
+    {
             Product product = supplier.getProductCatalog().addProduct();
             product.setProductName(nameField1.getText());
             String stringPrice = priceField.getText();
@@ -121,6 +123,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
             }
             product.setAvailability(Integer.parseInt(availTxt.getText()));
             JOptionPane.showMessageDialog(null, "Product successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
+    }
+    catch(Exception e)
+    {
+        JOptionPane.showMessageDialog(null, "Enter the values", "Warning", JOptionPane.INFORMATION_MESSAGE);
+    }
 }//GEN-LAST:event_createButtonActionPerformed
   private void backAction() {
         userProcessContainer.remove(this);
@@ -140,6 +147,8 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
+           Validations.ToInteger(evt);
+        availTxt.setText("");
     }//GEN-LAST:event_availTxtKeyPressed
 
     private void nameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameField1ActionPerformed
@@ -149,11 +158,13 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     private void nameField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameField1KeyPressed
         // TODO add your handling code here:
         Validations.ToAlphabet(evt);
+        nameField1.setText("");
     }//GEN-LAST:event_nameField1KeyPressed
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
+        priceField.setText("");
     }//GEN-LAST:event_priceFieldKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
