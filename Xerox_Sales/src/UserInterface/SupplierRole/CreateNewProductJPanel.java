@@ -10,6 +10,7 @@ package UserInterface.SupplierRole;
 //import UserInterface.AdminstrativeRole.ManageSuppliers;
 import Business.Product.Product;
 import Business.Supplier.Supplier;
+import Utility.Validations;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -91,6 +92,16 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 30));
 
         nameField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nameField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameField1ActionPerformed(evt);
+            }
+        });
+        nameField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameField1KeyPressed(evt);
+            }
+        });
         add(nameField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -133,11 +144,21 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
+        Validations.ToInteger(evt);
     }//GEN-LAST:event_priceFieldKeyPressed
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_availTxtKeyPressed
+
+    private void nameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameField1ActionPerformed
+
+    private void nameField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameField1KeyPressed
+        // TODO add your handling code here:
+        Validations.ToAlphabet(evt);
+    }//GEN-LAST:event_nameField1KeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availTxt;

@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Utility.Validations;
 
 /**
  *
@@ -116,6 +117,12 @@ public class CreateMarketOffer extends javax.swing.JPanel {
         add(supplierComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 145, 121, -1));
 
         add(productComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 189, 121, -1));
+
+        flrTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                flrTxtKeyPressed(evt);
+            }
+        });
         add(flrTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 234, 121, -1));
 
         tarTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +130,18 @@ public class CreateMarketOffer extends javax.swing.JPanel {
                 tarTxtActionPerformed(evt);
             }
         });
+        tarTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tarTxtKeyPressed(evt);
+            }
+        });
         add(tarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 278, 121, -1));
+
+        ceilTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ceilTxtKeyPressed(evt);
+            }
+        });
         add(ceilTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 322, 121, -1));
 
         createBtn.setText("Create");
@@ -187,6 +205,21 @@ public class CreateMarketOffer extends javax.swing.JPanel {
         ManageMarketOffer manageOffer = (ManageMarketOffer)userProcessContainer.getComponent(componentArray.length -1);
         manageOffer.populateTable();
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void flrTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_flrTxtKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_flrTxtKeyPressed
+
+    private void tarTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tarTxtKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tarTxtKeyPressed
+
+    private void ceilTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ceilTxtKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ceilTxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
