@@ -37,6 +37,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         managesuppliersButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         managesuppliersButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -49,6 +50,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         add(managesuppliersButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 260, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("My Work Area -Aminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

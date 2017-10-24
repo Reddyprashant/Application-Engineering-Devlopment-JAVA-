@@ -65,6 +65,11 @@ public class ViewSupplier extends javax.swing.JPanel {
         productCatalog = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        supplierName.setBackground(new java.awt.Color(51, 51, 51));
+        supplierName.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        supplierName.setForeground(new java.awt.Color(255, 255, 255));
         supplierName.setText("Supplier Name");
 
         productCatalog.setModel(new javax.swing.table.DefaultTableModel(
@@ -102,7 +107,7 @@ public class ViewSupplier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(supplierName)
-                .addContainerGap(539, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +127,7 @@ public class ViewSupplier extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jButton1)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

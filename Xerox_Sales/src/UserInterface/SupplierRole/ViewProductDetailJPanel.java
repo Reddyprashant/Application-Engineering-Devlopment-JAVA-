@@ -61,13 +61,16 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         availTxt = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("View Product Detail");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 25, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Product Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 30));
 
@@ -78,6 +81,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 159, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Product Price:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
 
@@ -116,6 +120,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 159, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Product ID:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 30));
 
@@ -130,6 +135,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 70, 30));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Availability:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 110, -1));
 

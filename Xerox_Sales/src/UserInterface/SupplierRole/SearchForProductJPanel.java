@@ -46,20 +46,23 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
         searchButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Search for Product");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 25, -1, 52));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Product Id");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 116, -1, -1));
 
-        idField.setFont(new java.awt.Font("Tahoma", 0, 18));
+        idField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 145, 250, -1));
 
-        searchButton.setFont(new java.awt.Font("Tahoma", 0, 18));
+        searchButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         searchButton.setText("Search Now >>");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +71,7 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
         });
         add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 144, 160, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("<< Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
