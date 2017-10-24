@@ -1,5 +1,10 @@
 package Interface;
 
+import Business.Business;
+import Business.Market.Market;
+import Business.Order.Order;
+import Business.Order.OrderItem;
+import Business.Person.Person;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -19,9 +24,24 @@ public class MonitorSales extends javax.swing.JPanel {
      * Creates new form view
      */
     private JPanel userProcessContainer;
-    public MonitorSales(JPanel userProcessContainer) {
+    private Business busines;
+    private Person person;
+    public MonitorSales(JPanel userProcessContainer,Business business, Person person) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.busines=business;
+        this.person= person;
+        totalRevenue();
+        totalRevenueTarget();
+        totalProfit();
+                productSalesRevenueComboBox.removeAllItems();
+        for (Market market : business.getMarketList().getMarketList()) {
+            productSalesRevenueComboBox.addItem(market);
+            
+        }
+        profitMarketActual();
+        profitMarketTarget();
+        marketTotalProfit();
     }
 
     /**
@@ -36,40 +56,49 @@ public class MonitorSales extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        productSalesRevenueComboBox = new javax.swing.JComboBox<>();
+        productSalesRevenueComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         totalRevenueTarget = new javax.swing.JTextField();
         totalRevenueActual = new javax.swing.JTextField();
-        productSalesRevenueTF = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        totalProfitTxt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        marketRevenueActual = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        marketRevenueTarget = new javax.swing.JTextField();
+        marketTotalProfitTxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Monitor Sales Performance");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Product Sales Revenue by market:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Total Revenue for Xerox(target):");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        add(productSalesRevenueComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 130, -1));
+        productSalesRevenueComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productSalesRevenueComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Total Revenue for Xerox(actual):");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        add(totalRevenueTarget, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 140, -1));
-        add(totalRevenueActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 140, -1));
-        add(productSalesRevenueTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 120, -1));
+
+        totalRevenueTarget.setEditable(false);
+        totalRevenueTarget.setEnabled(false);
+
+        totalRevenueActual.setEditable(false);
+        totalRevenueActual.setEnabled(false);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +106,125 @@ public class MonitorSales extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Total Profit:");
+
+        totalProfitTxt.setEditable(false);
+        totalProfitTxt.setEnabled(false);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Total Revenue of Market(actual):");
+
+        marketRevenueActual.setEditable(false);
+        marketRevenueActual.setEnabled(false);
+        marketRevenueActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marketRevenueActualActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Total Revenue of Market(target):");
+
+        marketRevenueTarget.setEditable(false);
+        marketRevenueTarget.setEnabled(false);
+
+        marketTotalProfitTxt.setEditable(false);
+        marketTotalProfitTxt.setEnabled(false);
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Total Profit of Market:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8))
+                            .addComponent(jLabel6))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(marketRevenueActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(marketRevenueTarget)
+                                .addComponent(marketTotalProfitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(jLabel5)
+                            .addGap(3, 3, 3)
+                            .addComponent(totalRevenueActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(backButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jLabel4))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(152, 152, 152)
+                                    .addComponent(jLabel3)))
+                            .addGap(3, 3, 3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(totalRevenueTarget)
+                                .addComponent(totalProfitTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(productSalesRevenueComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(totalRevenueActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(totalRevenueTarget, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(totalProfitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(productSalesRevenueComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(marketRevenueActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(marketRevenueTarget, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(marketTotalProfitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(backButton))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -86,15 +233,99 @@ public class MonitorSales extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void marketRevenueActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketRevenueActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marketRevenueActualActionPerformed
 
+    private void productSalesRevenueComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productSalesRevenueComboBoxActionPerformed
+        // TODO add your handling code here:
+                profitMarketActual();
+        profitMarketTarget();
+        marketTotalProfit();
+    }//GEN-LAST:event_productSalesRevenueComboBoxActionPerformed
+
+    public void totalRevenue()
+    {
+        double revenue=0;
+        for (Order order : busines.getOrderList().getOrderList()) {
+            
+                 revenue = revenue+order.orderTotal();
+            
+            
+            
+        }
+        totalRevenueActual.setText(String.valueOf(revenue));
+        //System.out.println("Interface.MonitorSales.totalRevenue()" + revenue);
+    }
+    
+    public void totalRevenueTarget()
+    {
+        double targetRevenue=0;
+        
+        for (Order order : busines.getOrderList().getOrderList()) {
+            targetRevenue= targetRevenue+order.orderTotalTargetPrice();
+        }
+        totalRevenueTarget.setText(String.valueOf(targetRevenue));
+    }
+     public void totalProfit()
+     {
+         double totalProfit=0;
+        double totalActual=Double.parseDouble(totalRevenueActual.getText());
+        double totalTarget =Double.parseDouble(totalRevenueTarget.getText());
+         totalProfit= totalActual-totalTarget;
+           totalProfitTxt.setText(String.valueOf(totalProfit));
+     }
+     
+     public void profitMarketActual()
+     {
+         Market market = (Market)productSalesRevenueComboBox.getSelectedItem();
+         double revenue=0;
+         for (Order order :busines.getOrderList().getOrderList()) {
+             if(market.getMarketName().equalsIgnoreCase(order.getCustomer().getMarketName()))
+             {
+                 revenue = revenue+order.orderTotal();
+             }
+         }
+         marketRevenueActual.setText(String.valueOf(revenue));
+     }
+     
+          public void profitMarketTarget()
+     {
+         Market market = (Market)productSalesRevenueComboBox.getSelectedItem();
+         double targetRevenue=0;
+         for (Order order :busines.getOrderList().getOrderList()) {
+             if(market.getMarketName().equalsIgnoreCase(order.getCustomer().getMarketName()))
+             {
+                 targetRevenue = targetRevenue+order.orderTotalTargetPrice();
+             }
+         }
+         marketRevenueTarget.setText(String.valueOf(targetRevenue));
+     }
+       
+       public void marketTotalProfit()
+     {
+         double totalProfit=0;
+        double totalActual=Double.parseDouble(marketRevenueActual.getText());
+        double totalTarget =Double.parseDouble(marketRevenueTarget.getText());
+         totalProfit= totalActual-totalTarget;
+           marketTotalProfitTxt.setText(String.valueOf(totalProfit));
+     }    
+          
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JComboBox<String> productSalesRevenueComboBox;
-    private javax.swing.JTextField productSalesRevenueTF;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField marketRevenueActual;
+    private javax.swing.JTextField marketRevenueTarget;
+    private javax.swing.JTextField marketTotalProfitTxt;
+    private javax.swing.JComboBox productSalesRevenueComboBox;
+    private javax.swing.JTextField totalProfitTxt;
     private javax.swing.JTextField totalRevenueActual;
     private javax.swing.JTextField totalRevenueTarget;
     // End of variables declaration//GEN-END:variables

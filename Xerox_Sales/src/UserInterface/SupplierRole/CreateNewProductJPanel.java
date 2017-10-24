@@ -61,6 +61,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 180, 110, 30));
 
         priceField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        priceField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceFieldActionPerformed(evt);
+            }
+        });
         priceField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 priceFieldKeyPressed(evt);
@@ -91,6 +96,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 30));
 
         nameField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nameField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameField1KeyPressed(evt);
+            }
+        });
         add(nameField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -133,11 +143,20 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_priceFieldKeyPressed
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_availTxtKeyPressed
+
+    private void priceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceFieldActionPerformed
+
+    private void nameField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameField1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameField1KeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availTxt;

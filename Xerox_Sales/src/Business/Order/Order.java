@@ -113,14 +113,23 @@ public class Order {
         return null;
     }
     
-   public int orderTotal(){
-        int totalPriceOrder = 0;
+   public double orderTotal(){
+        double totalPriceOrder = 0;
         for(OrderItem orderItem:orderItemList){
             
         totalPriceOrder =+ orderItem.orderItemTotal();
         }
         return totalPriceOrder;
     }
+   
+   public double orderTotalTargetPrice()
+   {
+       double totalTargetPrice =0;
+       for (OrderItem orderItem : orderItemList) {
+          totalTargetPrice=+orderItem.targetPrice();
+       }
+       return totalTargetPrice;
+   }
     public String statusreturn()
     {
         if(orderDate.equals(new Date()))

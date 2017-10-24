@@ -48,6 +48,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageMarket = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         manageOfferBtn = new javax.swing.JButton();
+        perBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -56,7 +57,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcome System Admin");
-        jPanel1.add(jLabel1);
 
         managePerson.setText("Manage Person");
         managePerson.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 managePersonActionPerformed(evt);
             }
         });
-        jPanel1.add(managePerson);
 
         manageSupplier.setText("Manage Supplier");
         manageSupplier.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +71,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageSupplierActionPerformed(evt);
             }
         });
-        jPanel1.add(manageSupplier);
 
         manageMarket.setText("Manage Market");
         manageMarket.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +78,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageMarketActionPerformed(evt);
             }
         });
-        jPanel1.add(manageMarket);
 
         jButton1.setText("Customer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +85,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
 
         manageOfferBtn.setText("Manage Market Offer");
         manageOfferBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +92,53 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOfferBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(manageOfferBtn);
+
+        perBtn.setText("Performance Monitor");
+        perBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                perBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(manageMarket, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageSupplier, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(managePerson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manageOfferBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(perBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(298, 298, 298))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1)
+                .addGap(48, 48, 48)
+                .addComponent(managePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(manageSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(manageMarket, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(manageOfferBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(perBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +180,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
        layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOfferBtnActionPerformed
 
+    private void perBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perBtnActionPerformed
+        // TODO add your handling code here:
+        ViewSalesWorkAreaJPanel monitor= new ViewSalesWorkAreaJPanel(userProcessContainer, business, person);
+        userProcessContainer.add("ManageSupplierAdministrative", monitor);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
+    }//GEN-LAST:event_perBtnActionPerformed
+
                            
 
 
@@ -150,5 +200,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton manageOfferBtn;
     private javax.swing.JButton managePerson;
     private javax.swing.JButton manageSupplier;
+    private javax.swing.JButton perBtn;
     // End of variables declaration//GEN-END:variables
 }

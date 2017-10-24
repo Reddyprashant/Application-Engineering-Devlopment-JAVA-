@@ -1,7 +1,16 @@
 package Interface;
 
+import Business.Business;
+import Business.Market.Market;
+import Business.Order.Order;
+import Business.Person.Person;
+import Business.Supplier.Supplier;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,9 +28,18 @@ public class MonitorSalesByPerson extends javax.swing.JPanel {
      * Creates new form view
      */
     private JPanel userProcessContainer;
-    public MonitorSalesByPerson(JPanel userProcessContainer) {
+        private Business busines;
+    private Person person;
+    public MonitorSalesByPerson(JPanel userProcessContainer,Business business, Person person) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+                this.busines=business;
+        this.person= person;
+          marketCombo.removeAllItems();
+        for (Market market : business.getMarketList().getMarketList()) {
+            marketCombo.addItem(market);
+        }
+        populateTopSales();
     }
 
     /**
@@ -34,12 +52,13 @@ public class MonitorSalesByPerson extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        top10SalesPerson = new javax.swing.JButton();
         salesPersonBelowTargetSales = new javax.swing.JButton();
         salesPersonAboveTargetSales = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        salesTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
+        marketCombo = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,26 +68,41 @@ public class MonitorSalesByPerson extends javax.swing.JPanel {
         jLabel1.setText("Monitor Sales By Person");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        top10SalesPerson.setText("Top Sales Person");
-        add(top10SalesPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
-
         salesPersonBelowTargetSales.setText("Sales Person Below Target Sales");
-        add(salesPersonBelowTargetSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 190, -1));
+        salesPersonBelowTargetSales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesPersonBelowTargetSalesActionPerformed(evt);
+            }
+        });
+        add(salesPersonBelowTargetSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 250, 50));
 
         salesPersonAboveTargetSales.setText("Sales Person Above Target Sales");
-        add(salesPersonAboveTargetSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 190, -1));
+        salesPersonAboveTargetSales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesPersonAboveTargetSalesActionPerformed(evt);
+            }
+        });
+        add(salesPersonAboveTargetSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 250, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        salesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Sales Person ID", "Sales Person Name"
+                "Emp ID", "Sales Person Name"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 530, 370));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(salesTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 530, 370));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,23 +110,157 @@ public class MonitorSalesByPerson extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
+        marketCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marketComboActionPerformed(evt);
+            }
+        });
+        add(marketCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 150, -1));
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Market Type:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+    }// </editor-fold>//GEN-END:initComponents
+public void populateTable(ArrayList<Person> personLists)
+{System.out.println("size populate table"+personLists);
+           //Supplier supplier= (Supplier)catalogueComboBox.getSelectedItem();
+        DefaultTableModel dtm = (DefaultTableModel)salesTable.getModel();
+        dtm.setRowCount(0);
+        for (Person person : personLists) {
+            Object row[] = new Object[3];
+//                            row[0]= orderItem.getMarketOffer().getProduct();
+                            row[0]=person;
+                            row[1]= person.getName();
+                           
+                             dtm.addRow(row);
+        
+    }
+        
+}
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void marketComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marketComboActionPerformed
+        // TODO add your handling code here:
+        populateTopSales();
+    }//GEN-LAST:event_marketComboActionPerformed
+
+    private void salesPersonAboveTargetSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesPersonAboveTargetSalesActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Person> personListAbove= new ArrayList<>();
+                            double revenue=0;
+                                double targetRevenue=0;
+               for (Person person : busines.getEmployeeDirectory().getPersonList()) {
+                    if (person.getRole().equals("Sales person")) {
+                        for (Order order : person.getOrderList()) { 
+                                
+                                revenue = revenue+order.orderTotal();
+                                targetRevenue = targetRevenue+order.orderTotalTargetPrice();                    
+                    }
+                        if(revenue>targetRevenue)
+                        {
+                            System.out.println("above person"+person.getEmpId());
+                 personListAbove.add(person);
+                
+                        }
+             
+        }       
+    }
+               populateTable(personListAbove);
+    }//GEN-LAST:event_salesPersonAboveTargetSalesActionPerformed
+
+    private void salesPersonBelowTargetSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesPersonBelowTargetSalesActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Person> personListBelow= new ArrayList<>();
+                            double revenue=0;
+                                double targetRevenue=0;
+               for (Person person : busines.getEmployeeDirectory().getPersonList()) {
+                    if (person.getRole().equals("Sales person")) {
+                        for (Order order : person.getOrderList()) { 
+                                
+                                revenue = revenue+order.orderTotal();
+                                targetRevenue = targetRevenue+order.orderTotalTargetPrice();                    
+                    }
+                        if(revenue<targetRevenue)
+                        {
+                             System.out.println("below person"+person.getEmpId());
+                 personListBelow.add(person);
+                
+                        }
+             
+        }       
+    }
+               populateTable(personListBelow);
+    }//GEN-LAST:event_salesPersonBelowTargetSalesActionPerformed
+public void populateTopSales(){
+        ArrayList<Person> personList= new ArrayList<>();
+         Market market= (Market) marketCombo.getSelectedItem();
+        
+               for (Person person : busines.getEmployeeDirectory().getPersonList()) {
+                    if (person.getRole().equals("Sales person")) {
+                     personList.add(person);
+                    }
+                    System.out.println("Sales size"+personList.size());
+        }
+                
+      
+         Collections.sort(personList, new Comparator<Person>(){
+   public int compare(Person p1, Person p2){
+     double fRevenue=0;
+     double fTargetRevenue=0;
+     int fTotalProfit=0;
+       for (Order order : p1.getOrderList()) {
+
+           if(order.getCustomer().getMarketName().equals(market.getMarketName())){
+   fRevenue = fRevenue+order.orderTotal();
+            fTargetRevenue = fTargetRevenue+order.orderTotalTargetPrice();
+            
+           }
+       }
+      fTotalProfit= (int)(fRevenue-fTargetRevenue);
+       //System.out.println(o1.getName()+ototal+"array"+otarget);
+    double sRevenue=0;
+     double sTargetRevenue=0;
+     int sTotalProfit=0;
+       for (Order order : p2.getOrderList()) {
+           if(order.getCustomer().getMarketName().equals(market.getMarketName())){
+          sRevenue += order.orderTotal();
+           sTargetRevenue += order.orderTotalTargetPrice();
+       }    
+      }
+      sTotalProfit= (int)(sRevenue-sTargetRevenue);  //System.out.println(o2.getName()+stotal+"array"+starget);
+ 
+      return (fTotalProfit-sTotalProfit);
+   }  
+});
+         ArrayList<Person> persons= new ArrayList<>();
+
+   int count=0;
+        for (Person person : personList) {
+            persons.add(person);
+            count++;
+            if(count==10){
+                break;
+            }
+        }
+        System.out.println("person sort size"+persons.size());
+         populateTable(persons);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox marketCombo;
     private javax.swing.JButton salesPersonAboveTargetSales;
     private javax.swing.JButton salesPersonBelowTargetSales;
-    private javax.swing.JButton top10SalesPerson;
+    private javax.swing.JTable salesTable;
     // End of variables declaration//GEN-END:variables
 }

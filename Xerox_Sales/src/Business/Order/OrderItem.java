@@ -47,9 +47,20 @@ public class OrderItem {
         this.paidPrice = paidPrice;
     }
     
-    public  int orderItemTotal()
+    public  double orderItemTotal()
     {
-        int totalPrice = getQuantity()*getPaidPrice();
+        double totalPrice = getQuantity()*getPaidPrice();
         return totalPrice;
+    }
+    public  double targetPrice()
+    {
+        double totalTargetPrcie = getQuantity()*getMarketOffer().getTargetRatio()*getMarketOffer().getProduct().getPrice();
+        return totalTargetPrcie;
+        
+    }
+    @Override
+    public String toString()
+    {
+        return marketOffer.getProduct().getProductName();
     }
 }

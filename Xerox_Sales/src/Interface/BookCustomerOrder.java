@@ -341,6 +341,16 @@ public class BookCustomerOrder extends javax.swing.JPanel {
        }
         
        int salesPrice = Integer.parseInt(txtSalesPrice.getText());
+       if((mo.getFloorRatio()*mo.getProduct().getPrice()>salesPrice))
+       {
+           JOptionPane.showMessageDialog(null, "Price should be more than floor price");
+            return;
+       }
+       if(mo.getCeilRatio()*mo.getProduct().getPrice()<salesPrice)
+       {
+           JOptionPane.showMessageDialog(null, "Price should be less than ceiling price");
+            return; 
+       }
         if(fetchQty <= p.getAvailability()){
             
            boolean alreadyPresent = false;

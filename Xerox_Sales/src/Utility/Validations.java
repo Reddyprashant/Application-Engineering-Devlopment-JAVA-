@@ -38,7 +38,7 @@ public class Validations {
 		return hash.toString();
 	}
     
-//    public static nameValidation(String input)
+//    public static nameValidation(keyevent evt)
 //            
 //    {
 //        char c = evt.getKeyChar();
@@ -47,7 +47,7 @@ public class Validations {
 //         (c == evt.VK_DELETE))) {
 //       JOptionPane.showMessageDialog(null, " Please Enter Integer value");
 //      
-//       salaryTxt.setText("");
+//       
 //      }
 //    }
     

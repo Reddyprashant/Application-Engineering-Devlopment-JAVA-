@@ -72,6 +72,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         nameField.setEditable(false);
         nameField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nameField.setEnabled(false);
         add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 159, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -104,6 +105,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         idField.setEditable(false);
         idField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         idField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        idField.setEnabled(false);
         add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 159, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

@@ -46,6 +46,7 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
         viewSales = new javax.swing.JButton();
         viewSalesByPerson = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -76,6 +77,13 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Top 3 Products");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,11 +94,12 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(250, 250, 250)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(viewSales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewSalesByPerson, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewSales, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewSalesByPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(backButton))
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +113,9 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(viewSales, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(viewSalesByPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
         );
@@ -113,14 +124,15 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesActionPerformed
-       MonitorSales ms= new MonitorSales(userProcessContainer);
+       MonitorSales ms= new MonitorSales(userProcessContainer, business, person);
        userProcessContainer.add("ManageSupplierAdministrative",ms);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
+       
     }//GEN-LAST:event_viewSalesActionPerformed
 
     private void viewSalesByPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesByPersonActionPerformed
-       MonitorSalesByPerson msp=new MonitorSalesByPerson(userProcessContainer);
+       MonitorSalesByPerson msp=new MonitorSalesByPerson(userProcessContainer, business, person);
        userProcessContainer.add("ManageSupplierAdministrative",msp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
@@ -132,9 +144,18 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+               TopProducts products=new TopProducts(userProcessContainer, business, person);
+       userProcessContainer.add("ManageSupplierAdministrative",products);
+       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton viewSales;
