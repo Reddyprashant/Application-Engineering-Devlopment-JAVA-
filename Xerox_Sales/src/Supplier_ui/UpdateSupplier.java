@@ -187,9 +187,14 @@ public class UpdateSupplier extends javax.swing.JPanel {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
 
-     try
-     {
-        res.setSupplierName(nameTextField.getText());
+        if(nameTextField.getText().isEmpty()||usernameTextField.getText().isEmpty()||passwordTextField.getText().isEmpty()){
+ JOptionPane.showMessageDialog(null,"Enter the correct values");
+        }
+        
+      
+else
+{
+    res.setSupplierName(nameTextField.getText());
       res.setSupplierId(supplierIdTextField.getText());
       res.setUserName(usernameTextField.getText());
       if(!(res.getPassword().equals(passwordTextField.getText())))
@@ -198,10 +203,6 @@ public class UpdateSupplier extends javax.swing.JPanel {
                 }
         
       JOptionPane.showMessageDialog(updateButton,"Updated succesfully");
-      }
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(updateButton,"Enter the correct values");
 }
     }//GEN-LAST:event_updateButtonActionPerformed
 

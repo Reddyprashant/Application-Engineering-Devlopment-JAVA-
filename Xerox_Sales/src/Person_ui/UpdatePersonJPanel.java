@@ -209,8 +209,13 @@ public class UpdatePersonJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-try{
-        res.setName(nameTextField.getText());
+if(nameTextField.getText().isEmpty()||usernameTextField.getText().isEmpty()||passwordTextField.getText().isEmpty()){
+        
+      JOptionPane.showMessageDialog(updateButton,"Enter the correct values");
+      }
+else
+{
+    res.setName(nameTextField.getText());
       res.setEmpId(personIdTextField.getText());
       res.setUserName(usernameTextField.getText());
       if(!(res.getPassword().equals(passwordTextField.getText())))
@@ -226,10 +231,6 @@ try{
      //String role= roleDropDown.setSelectedItem();
         
       JOptionPane.showMessageDialog(updateButton,"Updated succesfully");
-      }
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(updateButton,"Enter the correct values");
 }
     }//GEN-LAST:event_updateButtonActionPerformed
 
