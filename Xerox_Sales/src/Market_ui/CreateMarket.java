@@ -125,7 +125,10 @@ public class CreateMarket extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        String name=nameTextField.getText();
+
+try{
+    String name=nameTextField.getText();
+
         String marketId=marketIdTextField.getText();
         
         
@@ -138,6 +141,11 @@ public class CreateMarket extends javax.swing.JPanel {
         
         
         JOptionPane.showMessageDialog(createButton,"Created succesfully");
+}
+catch(Exception e)
+{
+    JOptionPane.showMessageDialog(createButton,"Enter the correct values");
+}
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

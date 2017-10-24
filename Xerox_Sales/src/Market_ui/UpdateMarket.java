@@ -158,12 +158,18 @@ public class UpdateMarket extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-      res.setMarketName(nameTextField.getText());
+try{
+        res.setMarketName(nameTextField.getText());
       //res.setMarketId(marketIdTextField.getText());
       
       
         
       JOptionPane.showMessageDialog(updateButton,"Updated succesfully");
+      }
+catch(Exception e)
+{
+    JOptionPane.showMessageDialog(updateButton,"Enter the correct values");
+}
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
