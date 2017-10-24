@@ -174,11 +174,13 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
+        priceField.setText("");
     }//GEN-LAST:event_priceFieldKeyPressed
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
+        availTxt.setText("");
     }//GEN-LAST:event_availTxtKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

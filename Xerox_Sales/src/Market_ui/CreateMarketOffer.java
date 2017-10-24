@@ -178,15 +178,26 @@ public class CreateMarketOffer extends javax.swing.JPanel {
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        try{
+        double floorRatio=Double.parseDouble(flrTxt.getText());
+        double targetRatio=Double.parseDouble(tarTxt.getText());
+        double ceilRatio=Double.parseDouble(ceilTxt.getText());
+        if(ceilRatio >= targetRatio && targetRatio>= floorRatio){
         MarketOffer marketOffer = business.getMarketOfferCatalog().addMarketOffer();
         Product product = (Product)productComboBox.getSelectedItem();
         Market market = (Market)marketComboBox.getSelectedItem();
-        marketOffer.setFloorRatio(Double.parseDouble(flrTxt.getText()));
-        marketOffer.setTargetRatio(Double.parseDouble(tarTxt.getText()));
-        marketOffer.setCeilRatio(Double.parseDouble(ceilTxt.getText()));
+        marketOffer.setFloorRatio(floorRatio);
+        marketOffer.setTargetRatio(targetRatio);
+        marketOffer.setCeilRatio(ceilRatio);
         marketOffer.setProduct(product);
         marketOffer.setMarket(market);
         JOptionPane.showMessageDialog(null,"Created succesfully");
+        }else{
+            JOptionPane.showMessageDialog(null,"enter Ceil Ratio>=Target Ratio>=Floor Ratio");
+        }
+        }catch(NumberFormatException N){
+                JOptionPane.showMessageDialog(null,"Fields cannot be empty and enter ratio only  in double");
+                }
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void supplierComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierComboBoxActionPerformed

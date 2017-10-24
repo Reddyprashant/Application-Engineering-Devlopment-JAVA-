@@ -201,10 +201,26 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
        // MarketOffer marketOffer = business.getMarketOfferCatalog().addMarketOffer();
-        marketOffer.setFloorRatio(Double.parseDouble(flrTxt.getText()));
-        marketOffer.setTargetRatio(Double.parseDouble(tarTxt.getText()));
-        marketOffer.setCeilRatio(Double.parseDouble(ceilTxt.getText()));
+       try{
+        double floorRatio=Double.parseDouble(flrTxt.getText());
+        double targetRatio=Double.parseDouble(tarTxt.getText());
+        double ceilRatio=Double.parseDouble(ceilTxt.getText());
+        if(ceilRatio >= targetRatio && targetRatio>= floorRatio){
+                 marketOffer.setFloorRatio(floorRatio);
+        marketOffer.setTargetRatio(targetRatio);
+        marketOffer.setCeilRatio(targetRatio);
         JOptionPane.showMessageDialog(null,"Updated succesfully");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"enter Ceil Ratio>=Target Ratio>=Floor Ratio");
+        }
+
+       }
+       catch(NumberFormatException n)
+       {
+           JOptionPane.showMessageDialog(null,"Fields cannotbe empty and enter ratio only  in double");
+       }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
