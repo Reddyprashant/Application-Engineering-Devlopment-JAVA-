@@ -186,7 +186,7 @@ public class UpdateSupplier extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-try {
+
      try
      {
         res.setSupplierName(nameTextField.getText());
