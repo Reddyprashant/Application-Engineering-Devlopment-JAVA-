@@ -10,6 +10,7 @@ import Business.Product.Product;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
+import Utility.Validations;
 
 /**
  *
@@ -82,6 +83,11 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         priceField.setEditable(false);
         priceField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         priceField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        priceField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                priceFieldKeyPressed(evt);
+            }
+        });
         add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 159, -1));
 
         createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -125,6 +131,12 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Availability:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 110, -1));
+
+        availTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                availTxtKeyPressed(evt);
+            }
+        });
         add(availTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,6 +168,16 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         product.setProductName(nameField.getText());
         product.setAvailability(Integer.parseInt(availTxt.getText()));
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
+        // TODO add your handling code here:
+        Validations.ToInteger(evt);
+    }//GEN-LAST:event_priceFieldKeyPressed
+
+    private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
+        // TODO add your handling code here:
+        Validations.ToInteger(evt);
+    }//GEN-LAST:event_availTxtKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availTxt;
