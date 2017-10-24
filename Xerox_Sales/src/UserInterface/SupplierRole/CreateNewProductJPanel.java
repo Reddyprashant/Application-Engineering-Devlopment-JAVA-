@@ -116,9 +116,14 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
     // TODO add your handling code here:
-    try
+    if(nameField1.getText().isEmpty()||priceField.getText().isEmpty()||availTxt.getText().isEmpty())
     {
-            Product product = supplier.getProductCatalog().addProduct();
+        JOptionPane.showMessageDialog(null, "Enter the values", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            
+    }
+    else
+    {
+        Product product = supplier.getProductCatalog().addProduct();
             product.setProductName(nameField1.getText());
             String stringPrice = priceField.getText();
             
@@ -128,10 +133,6 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
             }
             product.setAvailability(Integer.parseInt(availTxt.getText()));
             JOptionPane.showMessageDialog(null, "Product successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
-    }
-    catch(Exception e)
-    {
-        JOptionPane.showMessageDialog(null, "Enter the values", "Warning", JOptionPane.INFORMATION_MESSAGE);
     }
 }//GEN-LAST:event_createButtonActionPerformed
   private void backAction() {

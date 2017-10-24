@@ -83,19 +83,20 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        try
+        if(idField.getText().isEmpty())
         {
-        Product product;
+        JOptionPane.showMessageDialog(null, "Enter Product name", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            
+            Product product;
         String productId = (idField.getText());
         product = supplier.getProductCatalog().searchProduct(productId);
         ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, product);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", vpdjp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Enter Product name", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
         
 }//GEN-LAST:event_searchButtonActionPerformed

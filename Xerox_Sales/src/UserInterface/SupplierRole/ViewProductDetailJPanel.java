@@ -149,16 +149,17 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-        try
+        if(priceField.getText().isEmpty()||availTxt.getText().isEmpty())
         {
-       nameField.setEditable(true);
+          JOptionPane.showMessageDialog(null,"enter the values");
+        }
+       else
+        {
+            nameField.setEditable(true);
        priceField.setEditable(true);
        saveButton.setEnabled(true);
        availTxt.setEnabled(true);
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"enter the values");
+            JOptionPane.showMessageDialog(null,"Update successfull");
         }
 }//GEN-LAST:event_createButtonActionPerformed
 

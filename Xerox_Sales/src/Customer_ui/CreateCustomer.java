@@ -156,9 +156,13 @@ public class CreateCustomer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-       try
+       if(nameTextField.getText().isEmpty()||addressTextField.getText().isEmpty())
        {
-        String name=nameTextField.getText();
+         JOptionPane.showMessageDialog(createButton,"Enter the values");
+       }
+       else
+       {
+           String name=nameTextField.getText();
         //String customerId=customerIdTextField.getText();
         //String custN=nameTextField.getText();
         String address=addressTextField.getText();
@@ -172,10 +176,7 @@ public class CreateCustomer extends javax.swing.JPanel {
                 customer.setName(name);
 
         JOptionPane.showMessageDialog(createButton,"Created succesfully");
-       }
-       catch(Exception e)
-       {
-           JOptionPane.showMessageDialog(createButton,"Enter the values");
+          
        }
     }//GEN-LAST:event_createButtonActionPerformed
 

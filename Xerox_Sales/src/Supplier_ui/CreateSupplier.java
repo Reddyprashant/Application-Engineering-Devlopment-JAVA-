@@ -138,28 +138,25 @@ public class CreateSupplier extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        try{
-        String name=nameTextField.getText();
+        if(nameTextField.getText().isEmpty()||usernameTextField.getText().isEmpty()||passwordTextField.getText().isEmpty()){
+ JOptionPane.showMessageDialog(null,"Enter the correct values");
+        }
+        else
+        {
+            
+                   String name=nameTextField.getText();
         //String personId=personIdTextField.getText();
         String username=usernameTextField.getText();
         String password=passwordTextField.getText();
         
-        Supplier s=business.getSupplierDirectory().addSupplier();
-        
-        
+        Supplier s=business.getSupplierDirectory().addSupplier();             
         s.setSupplierName(name);
         //s.setSupplierId(personId);
         s.setUserName(username);
         s.setPassword(password);
-        
-        
-        
-        
-        JOptionPane.showMessageDialog(createButton,"Created succesfully");
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(createButton,"Enter the correct values");
+
+        JOptionPane.showMessageDialog(null,"Created succesfully");
+        return;
         }
     }//GEN-LAST:event_createButtonActionPerformed
 
