@@ -133,7 +133,7 @@ public class ViewSalesWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewSalesByPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSalesByPersonActionPerformed
        MonitorSalesByPerson msp=new MonitorSalesByPerson(userProcessContainer, business, person);
-       userProcessContainer.add("ManageSupplierAdministrative",msp);
+       userProcessContainer.add("MonitorSalesByPerson",msp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewSalesByPersonActionPerformed
