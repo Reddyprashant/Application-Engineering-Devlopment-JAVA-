@@ -170,7 +170,7 @@ public class PersonJPanelForm extends javax.swing.JPanel {
         {  
         Person res=(Person)personTable.getValueAt(selectedrow,0);
         UpdatePersonJPanel up= new UpdatePersonJPanel(userProcessContainer,business,res);
-        userProcessContainer.add("ManageSupplierAdministrative", up);
+        userProcessContainer.add("UpdatePersonJPanel", up);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -180,7 +180,7 @@ public class PersonJPanelForm extends javax.swing.JPanel {
 
     private void addPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonButtonActionPerformed
         CreatePerson cp= new CreatePerson(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", cp);
+        userProcessContainer.add("CreatePerson", cp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_addPersonButtonActionPerformed

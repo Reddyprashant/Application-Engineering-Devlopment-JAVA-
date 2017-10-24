@@ -170,7 +170,7 @@ public class SupplierJPanelForm extends javax.swing.JPanel {
         {  
         Supplier res=(Supplier)supplierTable.getValueAt(selectedrow,0);
         UpdateSupplier up= new UpdateSupplier(userProcessContainer,business,res);
-        userProcessContainer.add("ManageSupplierAdministrative", up);
+        userProcessContainer.add("UpdateSupplier", up);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -180,7 +180,7 @@ public class SupplierJPanelForm extends javax.swing.JPanel {
 
     private void addSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupplierButtonActionPerformed
         CreateSupplier cp= new CreateSupplier(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", cp);
+        userProcessContainer.add("CreateSupplier", cp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_addSupplierButtonActionPerformed

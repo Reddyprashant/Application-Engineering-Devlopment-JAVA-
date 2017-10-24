@@ -162,7 +162,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         {  
         Customer res=(Customer)customerTable.getValueAt(selectedrow,0);
         UpdateCustomer up= new UpdateCustomer(userProcessContainer,business, res);
-        userProcessContainer.add("ManageSupplierAdministrative", up);
+        userProcessContainer.add("UpdateCustomer", up);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -172,7 +172,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
 
     private void addSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupplierButtonActionPerformed
         CreateCustomer cp= new CreateCustomer(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", cp);
+        userProcessContainer.add("CreateCustomer", cp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_addSupplierButtonActionPerformed

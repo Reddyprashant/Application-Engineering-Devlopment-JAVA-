@@ -137,7 +137,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
         {  
         Market res=(Market)marketTable.getValueAt(selectedrow,0);
         UpdateMarket up= new UpdateMarket(userProcessContainer,business,res);
-        userProcessContainer.add("ManageSupplierAdministrative", up);
+        userProcessContainer.add("UpdateMarket", up);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -147,7 +147,7 @@ public class MarketJPanelForm extends javax.swing.JPanel {
 
     private void addSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupplierButtonActionPerformed
         CreateMarket cp= new CreateMarket(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", cp);
+        userProcessContainer.add("CreateMarket", cp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_addSupplierButtonActionPerformed

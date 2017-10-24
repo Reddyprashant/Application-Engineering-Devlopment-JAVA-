@@ -155,7 +155,7 @@ public void populateTable()
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
                 CreateMarketOffer marketOffer= new CreateMarketOffer(userProcessContainer, business);
-        userProcessContainer.add("ManageSupplierAdministrative", marketOffer);
+        userProcessContainer.add("CreateMarketOffer", marketOffer);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_createBtnActionPerformed
@@ -167,7 +167,7 @@ public void populateTable()
         {
          MarketOffer marketOffer=(MarketOffer)marketOfferTable.getValueAt(selectedrow,1);
         UpdateMarketOffer updateMarketOffer= new UpdateMarketOffer(userProcessContainer, business, marketOffer);
-        userProcessContainer.add("ManageSupplierAdministrative", updateMarketOffer);
+        userProcessContainer.add("UpdateMarketOffer", updateMarketOffer);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
