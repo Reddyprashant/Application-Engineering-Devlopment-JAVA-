@@ -52,18 +52,22 @@ public class AddSupplier extends javax.swing.JPanel {
         addjButton1 = new javax.swing.JButton();
         backjButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NEW SUPPLIER");
 
-        addjButton1.setText("ADD SUPPLIER");
+        addjButton1.setText("Add Supplier");
         addjButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addjButton1ActionPerformed(evt);
             }
         });
 
-        backjButton2.setText("<<BACK");
+        backjButton2.setText("Back");
         backjButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backjButton2ActionPerformed(evt);
@@ -88,7 +92,7 @@ public class AddSupplier extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backjButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
                 .addComponent(addjButton1)
                 .addGap(19, 19, 19))
         );

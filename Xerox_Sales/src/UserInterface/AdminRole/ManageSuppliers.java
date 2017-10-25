@@ -72,6 +72,8 @@ public class ManageSuppliers extends javax.swing.JPanel {
         addsupplierjButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -93,7 +95,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(supplierTable);
 
-        backjButton2.setText("<<Back");
+        backjButton2.setText("Back");
         backjButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backjButton2ActionPerformed(evt);
@@ -121,6 +123,8 @@ public class ManageSuppliers extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Manage Suppliers Work Area");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -143,7 +147,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel1)))
-                .addContainerGap(1784, Short.MAX_VALUE))
+                .addContainerGap(1674, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +163,7 @@ public class ManageSuppliers extends javax.swing.JPanel {
                     .addComponent(viewjButton2))
                 .addGap(18, 18, 18)
                 .addComponent(addsupplierjButton3)
-                .addContainerGap(1008, Short.MAX_VALUE))
+                .addContainerGap(997, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

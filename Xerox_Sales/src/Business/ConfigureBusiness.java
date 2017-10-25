@@ -85,7 +85,7 @@ public class ConfigureBusiness {
         p6.setAvailability(88);
         
         Supplier s4 = sd.addSupplier();
-        s4.setSupplierName("Samasung");
+        s4.setSupplierName("Samsung");
         s4.setUserName("s123");
         s4.setPassword("s123");
         

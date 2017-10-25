@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import Business.Supplier.*;
 import Business.Market.*;
+import java.awt.Component;
 /**
  *
  * @author raj
@@ -70,6 +71,7 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         deleteSupplier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         customerTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -118,21 +120,33 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(customerTable);
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addSupplierButton)
-                            .addComponent(updateSupplier)
-                            .addComponent(deleteSupplier))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addSupplierButton)
+                                    .addComponent(updateSupplier)
+                                    .addComponent(deleteSupplier))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(backButton)))
                 .addContainerGap(1102, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,7 +163,9 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(deleteSupplier))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addContainerGap())
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -192,9 +208,20 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(updateSupplier,"Please select a row first");
     }//GEN-LAST:event_deleteSupplierActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+
+        //Component[] componentArray=userProcessContainer.getComponents();
+        //mjp = (CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
+        //mjp.populateCustomerTable();
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupplierButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JTable customerTable;
     private javax.swing.JButton deleteSupplier;
     private javax.swing.JLabel jLabel1;

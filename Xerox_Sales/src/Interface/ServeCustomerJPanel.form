@@ -74,25 +74,16 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="bookCustomerOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="viewCustomerHistoryButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="bookCustomerOrder" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkOrderStatusButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="browseProductCatalogueButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="checkOrderStatusButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="browseProductCatalogueButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
-                                          <Component id="customerNameTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
+                                  <Component id="customerNameTextField" min="-2" pref="121" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -129,11 +120,8 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="customerNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="bookCustomerOrder" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="viewCustomerHistoryButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
+                  <Component id="bookCustomerOrder" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="checkOrderStatusButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -266,11 +254,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="viewCustomerHistoryButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="View Customer History"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

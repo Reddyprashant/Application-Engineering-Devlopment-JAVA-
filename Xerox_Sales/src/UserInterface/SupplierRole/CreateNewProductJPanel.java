@@ -51,10 +51,15 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         availTxt = new javax.swing.JTextField();
         priceField = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Create New Product");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Product Price:");
 
         createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -66,7 +71,7 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         });
 
         backButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        backButton1.setText("<< Back");
+        backButton1.setText("Back");
         backButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButton1ActionPerformed(evt);
@@ -74,6 +79,7 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Product Name:");
 
         nameField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -84,6 +90,7 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Availablity :");
 
         availTxt.addKeyListener(new java.awt.event.KeyAdapter() {
