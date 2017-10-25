@@ -14,7 +14,7 @@ import Business.Market.MarketOffer;
 public class OrderItem {
     private MarketOffer marketOffer;
     private int quantity;
-    private int paidPrice;
+    private double paidPrice;
     
 
     public OrderItem()
@@ -39,11 +39,11 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public int getPaidPrice() {
+    public double getPaidPrice() {
         return paidPrice;
     }
 
-    public void setPaidPrice(int paidPrice) {
+    public void setPaidPrice(double paidPrice) {
         this.paidPrice = paidPrice;
     }
     

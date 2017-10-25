@@ -195,8 +195,9 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
-           Validations.ToInteger(evt);
-        availTxt.setText("");
+           Validations.ToInteger(evt,availTxt);
+           
+        
     }//GEN-LAST:event_availTxtKeyPressed
 
     private void nameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameField1ActionPerformed
@@ -205,13 +206,13 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
 
     private void nameField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameField1KeyPressed
         // TODO add your handling code here:
-        Validations.ToAlphabet(evt);
+        Validations.ToAlphabet(evt,nameField1);
         
     }//GEN-LAST:event_nameField1KeyPressed
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
-        Validations.ToInteger(evt);
+        Validations.ToInteger(evt, priceField);
        
     }//GEN-LAST:event_priceFieldKeyPressed
    

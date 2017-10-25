@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author prashantreddy
@@ -38,7 +39,7 @@ public class Validations {
 		return hash.toString();
 	}
   
-    public static void ToInteger(KeyEvent evt)
+    public static void ToInteger(KeyEvent evt, JTextField j)
        
     {
         char c = evt.getKeyChar();
@@ -46,18 +47,18 @@ public class Validations {
          (c == evt.VK_BACK_SPACE) ||
          (c == evt.VK_DELETE))) {
        JOptionPane.showMessageDialog(null, " Please Enter Integer value");
-      
+      j.setText("");
       }
     }
     
-    public static void ToAlphabet(KeyEvent evt)
+    public static void ToAlphabet(KeyEvent evt, JTextField k)
     {
         char c = evt.getKeyChar();
               if (!((c >= 'a') && (c <= 'z') ||
          (c == evt.VK_BACK_SPACE) ||
          (c == evt.VK_DELETE))) {
        JOptionPane.showMessageDialog(null, " Please Enter alphabet");
-      
+      k.setText("");
       }
     }
 }

@@ -353,7 +353,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
             
        }
         
-       int salesPrice = Integer.parseInt(txtSalesPrice.getText());
+       double salesPrice = Integer.parseInt(txtSalesPrice.getText());
        if((mo.getFloorRatio()*mo.getProduct().getPrice()>salesPrice))
        {
            JOptionPane.showMessageDialog(null, "Price should be more than floor price");

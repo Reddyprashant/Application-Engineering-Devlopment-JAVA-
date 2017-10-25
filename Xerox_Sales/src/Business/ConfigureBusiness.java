@@ -85,7 +85,7 @@ public class ConfigureBusiness {
         p6.setAvailability(88);
         
         Supplier s4 = sd.addSupplier();
-        s4.setSupplierName("Samsung");
+        s4.setSupplierName("Samasung");
         s4.setUserName("s123");
         s4.setPassword("s123");
         
@@ -314,37 +314,37 @@ public class ConfigureBusiness {
         
 
         
-//        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-//        
-//        Order order = business.getOrderList().addOrder();
-//        order.setCustomer(customer);
-//        order.setExpectedDeliveryDate(date.parse("10/29/2017"));
-//        order.setOrderDate(date.parse("10/25/2017"));
-//        order.setStatus("in Transit");
-//        order.getOrderItemList().add(orderItem);
-//        order.setPerson(person1);
-//        person1.getOrderList().add(order);
-//        
-//        Order order1 = business.getOrderList().addOrder();
-//        order1.setCustomer(customer1);
-//        order1.setExpectedDeliveryDate(date.parse("10/28/2017"));
-//        order1.setOrderDate(date.parse("10/26/2017"));
-//        order1.setStatus("in Transit");
-//        order1.getOrderItemList().add(orderItems);
-//        order1.setPerson(person1);
-//        person1.getOrderList().add(order1);
-//        
-//        Order order2 = business.getOrderList().addOrder();
-//        order2.setCustomer(customer2);
-//        order2.setExpectedDeliveryDate(date.parse("10/30/2017"));
-//        order2.setOrderDate(date.parse("10/26/2017"));
-//        order2.setStatus("in Transit");
-//        order2.getOrderItemList().add(orderItem1);
-//        order2.setPerson(person1);
-//        person1.getOrderList().add(order2);
+        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+        
+        Order order = business.getOrderList().addOrder();
+        order.setCustomer(customer);
+        order.setExpectedDeliveryDate(date.parse("10/29/2017"));
+        order.setOrderDate(date.parse("10/25/2017"));
+        order.setStatus("in Transit");
+        order.getOrderItemList().add(orderItem);
+        order.setPerson(person1);
+        person1.getOrderList().add(order);
+        
+        Order order1 = business.getOrderList().addOrder();
+        order1.setCustomer(customer1);
+        order1.setExpectedDeliveryDate(date.parse("10/28/2017"));
+        order1.setOrderDate(date.parse("10/26/2017"));
+        order1.setStatus("in Transit");
+        order1.getOrderItemList().add(orderItems);
+        order1.setPerson(person1);
+        person1.getOrderList().add(order1);
+        
+        Order order2 = business.getOrderList().addOrder();
+        order2.setCustomer(customer2);
+        order2.setExpectedDeliveryDate(date.parse("10/30/2017"));
+        order2.setOrderDate(date.parse("10/26/2017"));
+        order2.setStatus("in Transit");
+        order2.getOrderItemList().add(orderItem1);
+        order2.setPerson(person1);
+        person1.getOrderList().add(order2);
        }
-//        catch(ParseException p)
-catch(Exception e)
+        catch(ParseException p)
+
         {
            JOptionPane.showMessageDialog(null, "Please Enter date in MM/dd/yyyy format");
         }

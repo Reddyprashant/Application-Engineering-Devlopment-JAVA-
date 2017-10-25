@@ -20,6 +20,14 @@ public class MarketOffer {
     private Product product;
    // private int price;
     private String marketOfferId;
+
+    public String getMarketOfferId() {
+        return marketOfferId;
+    }
+
+    public void setMarketOfferId(String marketOfferId) {
+        this.marketOfferId = marketOfferId;
+    }
     private static int count=0;
     
     public MarketOffer()
