@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import Business.Supplier.*;
 import Business.Market.*;
+import java.awt.Component;
 /**
  *
  * @author raj
@@ -212,9 +213,9 @@ public class CustomerJPanelForm extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
-        Component[] componentArray=userProcessContainer.getComponents();
-        mjp = (CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
-        mjp.populateCustomerTable();
+        //Component[] componentArray=userProcessContainer.getComponents();
+        //mjp = (CustomerJPanelForm)userProcessContainer.getComponent(componentArray.length -1);
+        //mjp.populateCustomerTable();
     }//GEN-LAST:event_backButtonActionPerformed
 
 
