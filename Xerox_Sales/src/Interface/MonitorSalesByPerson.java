@@ -134,7 +134,7 @@ public void populateTable(ArrayList<Person> personLists)
 //                            row[0]= orderItem.getMarketOffer().getProduct();
                             row[0]=person;
                             row[1]= person.getName();
-                           
+                            
                              dtm.addRow(row);
         
     }
@@ -157,7 +157,7 @@ public void populateTable(ArrayList<Person> personLists)
                             double revenue=0;
                                 double targetRevenue=0;
                for (Person person : busines.getEmployeeDirectory().getPersonList()) {
-                    if (person.getRole().equals("Sales person")) {
+                    if (person.getRole().equals("Sales person") && person.getOrderList().size() > 0) {
                         for (Order order : person.getOrderList()) { 
                                 
                                 revenue = revenue+order.orderTotal();
@@ -169,6 +169,8 @@ public void populateTable(ArrayList<Person> personLists)
                  personListAbove.add(person);
                 
                         }
+                        revenue=0;
+                        targetRevenue=0;
              
         }       
     }
@@ -181,7 +183,7 @@ public void populateTable(ArrayList<Person> personLists)
                             double revenue=0;
                                 double targetRevenue=0;
                for (Person person : busines.getEmployeeDirectory().getPersonList()) {
-                    if (person.getRole().equals("Sales person")) {
+                    if (person.getRole().equals("Sales person") && person.getOrderList().size() > 0) {
                         for (Order order : person.getOrderList()) { 
                                 
                                 revenue = revenue+order.orderTotal();
@@ -193,6 +195,8 @@ public void populateTable(ArrayList<Person> personLists)
                  personListBelow.add(person);
                 
                         }
+                         revenue=0;
+                        targetRevenue=0;
              
         }       
     }
@@ -203,7 +207,7 @@ public void populateTopSales(){
          Market market= (Market) marketCombo.getSelectedItem();
         
                for (Person person : busines.getEmployeeDirectory().getPersonList()) {
-                    if (person.getRole().equals("Sales person")) {
+                    if (person.getRole().equals("Sales person") && person.getOrderList().size()>0) {
                      personList.add(person);
                     }
                     System.out.println("Sales size"+personList.size());
@@ -223,18 +227,18 @@ public void populateTopSales(){
             
            }
        }
-      fTotalProfit= (int)(fRevenue-fTargetRevenue);
+      fTotalProfit= (int)(fTargetRevenue-fRevenue);
        //System.out.println(o1.getName()+ototal+"array"+otarget);
     double sRevenue=0;
      double sTargetRevenue=0;
      int sTotalProfit=0;
        for (Order order : p2.getOrderList()) {
            if(order.getCustomer().getMarketName().equals(market.getMarketName())){
-          sRevenue += order.orderTotal();
-           sTargetRevenue += order.orderTotalTargetPrice();
+          sRevenue = sRevenue +order.orderTotal();
+           sTargetRevenue = sTargetRevenue +order.orderTotalTargetPrice();
        }    
       }
-      sTotalProfit= (int)(sRevenue-sTargetRevenue);  //System.out.println(o2.getName()+stotal+"array"+starget);
+      sTotalProfit= (int)(sTargetRevenue-sRevenue);  //System.out.println(o2.getName()+stotal+"array"+starget);
  
       return (fTotalProfit-sTotalProfit);
    }  

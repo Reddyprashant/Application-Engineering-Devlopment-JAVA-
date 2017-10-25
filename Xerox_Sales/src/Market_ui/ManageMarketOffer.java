@@ -195,7 +195,7 @@ public void populateTable()
    if(selectedrow>=0)
         {    
             JOptionPane.showMessageDialog(null,"Are you sure you want to delete this entry?");
-            MarketOffer marketOffer=(MarketOffer)marketOfferTable.getValueAt(selectedrow,0);
+            MarketOffer marketOffer=(MarketOffer)marketOfferTable.getValueAt(selectedrow,1);
             business.getMarketOfferCatalog().deleteMarketOffer(marketOffer);
             populateTable();
              JOptionPane.showMessageDialog(null,"Person deleted");

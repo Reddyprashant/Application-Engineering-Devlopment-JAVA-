@@ -89,10 +89,10 @@ public class ConfigureBusiness {
         s4.setUserName("s123");
         s4.setPassword("s123");
         
-        Product p7= s4.getProductCatalog().addProduct();        
-        p7.setProductName("Samsung Galaxy S8");
-        p7.setPrice(900);
-        p7.setAvailability(100);
+//        Product p7= s4.getProductCatalog().addProduct();        
+//        p7.setProductName("Samsung Galaxy S8");
+//        p7.setPrice(900);
+//        p7.setAvailability(100);
         
         Product p8 = s4.getProductCatalog().addProduct();        
         p8.setProductName("Samsung QLED TV");
@@ -256,7 +256,7 @@ public class ConfigureBusiness {
         products.add(p4);
         products.add(p5);
         products.add(p6);
-        products.add(p7);
+//        products.add(p7);
         products.add(p8);
         products.add(p9);
         MarketOffer marketOffers = new MarketOffer();
@@ -312,41 +312,41 @@ public class ConfigureBusiness {
         orderItem1.setQuantity(2);
         orderItem1.setPaidPrice(900);
         
-//        ArrayList<OrderItem> orderItemList= new ArrayList<OrderItem>();
-//        orderItemList.add(orderItem);
+
         
-        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-        
-        Order order = business.getOrderList().addOrder();
-        order.setCustomer(customer);
-        order.setExpectedDeliveryDate(date.parse("10/29/2017"));
-        order.setOrderDate(date.parse("10/25/2017"));
-        order.setStatus("in Transit");
-        order.getOrderItemList().add(orderItem);
-        order.setPerson(person1);
-        person1.getOrderList().add(order);
-        
-        Order order1 = business.getOrderList().addOrder();
-        order1.setCustomer(customer1);
-        order1.setExpectedDeliveryDate(date.parse("10/28/2017"));
-        order1.setOrderDate(date.parse("10/26/2017"));
-        order1.setStatus("in Transit");
-        order1.getOrderItemList().add(orderItems);
-        order1.setPerson(person1);
-        person1.getOrderList().add(order1);
-        
-        Order order2 = business.getOrderList().addOrder();
-        order2.setCustomer(customer2);
-        order2.setExpectedDeliveryDate(date.parse("10/30/2017"));
-        order2.setOrderDate(date.parse("10/26/2017"));
-        order2.setStatus("in Transit");
-        order2.getOrderItemList().add(orderItem1);
-        order2.setPerson(person1);
-        person1.getOrderList().add(order2);
-        }
-        catch(ParseException p)
+//        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+//        
+//        Order order = business.getOrderList().addOrder();
+//        order.setCustomer(customer);
+//        order.setExpectedDeliveryDate(date.parse("10/29/2017"));
+//        order.setOrderDate(date.parse("10/25/2017"));
+//        order.setStatus("in Transit");
+//        order.getOrderItemList().add(orderItem);
+//        order.setPerson(person1);
+//        person1.getOrderList().add(order);
+//        
+//        Order order1 = business.getOrderList().addOrder();
+//        order1.setCustomer(customer1);
+//        order1.setExpectedDeliveryDate(date.parse("10/28/2017"));
+//        order1.setOrderDate(date.parse("10/26/2017"));
+//        order1.setStatus("in Transit");
+//        order1.getOrderItemList().add(orderItems);
+//        order1.setPerson(person1);
+//        person1.getOrderList().add(order1);
+//        
+//        Order order2 = business.getOrderList().addOrder();
+//        order2.setCustomer(customer2);
+//        order2.setExpectedDeliveryDate(date.parse("10/30/2017"));
+//        order2.setOrderDate(date.parse("10/26/2017"));
+//        order2.setStatus("in Transit");
+//        order2.getOrderItemList().add(orderItem1);
+//        order2.setPerson(person1);
+//        person1.getOrderList().add(order2);
+       }
+//        catch(ParseException p)
+catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Please Enter date in MM/dd/yyyy format");
+           JOptionPane.showMessageDialog(null, "Please Enter date in MM/dd/yyyy format");
         }
         return business;
     }

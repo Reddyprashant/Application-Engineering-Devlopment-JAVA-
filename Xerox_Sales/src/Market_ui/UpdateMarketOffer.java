@@ -206,7 +206,7 @@ public class UpdateMarketOffer extends javax.swing.JPanel {
         double targetRatio=Double.parseDouble(tarTxt.getText());
         double ceilRatio=Double.parseDouble(ceilTxt.getText());
         if(ceilRatio >= targetRatio && targetRatio>= floorRatio){
-                 marketOffer.setFloorRatio(floorRatio);
+        marketOffer.setFloorRatio(floorRatio);
         marketOffer.setTargetRatio(targetRatio);
         marketOffer.setCeilRatio(targetRatio);
         JOptionPane.showMessageDialog(null,"Updated succesfully");

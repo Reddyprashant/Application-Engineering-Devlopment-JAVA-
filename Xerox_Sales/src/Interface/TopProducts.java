@@ -12,9 +12,11 @@ import Business.Order.Order;
 import Business.Order.OrderItem;
 import Business.Person.Person;
 import Business.Product.Product;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,7 +40,7 @@ public class TopProducts extends javax.swing.JPanel {
         marketCombo.removeAllItems();
         for (Market market : business.getMarketList().getMarketList()) {
             marketCombo.addItem(market);
-            //populateTable();
+           
         }
     }
 
@@ -56,6 +58,7 @@ public class TopProducts extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         productTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Top 3 Products Above Target Price");
 
@@ -85,6 +88,13 @@ public class TopProducts extends javax.swing.JPanel {
 
         jLabel2.setText("Market Type");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,24 +105,31 @@ public class TopProducts extends javax.swing.JPanel {
                         .addGap(213, 213, 213)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(marketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(marketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(267, 267, 267)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addComponent(jLabel1)))
-                .addContainerGap(1032, Short.MAX_VALUE))
+                .addContainerGap(748, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(marketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(marketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(472, Short.MAX_VALUE))
@@ -124,12 +141,12 @@ public class TopProducts extends javax.swing.JPanel {
          DefaultTableModel dtm = (DefaultTableModel)productTable.getModel();
         dtm.setRowCount(0);
         for (Product product : products) {
-            Object row[] = new Object[5];
+            Object row[] = new Object[4];
 //                            row[0]= orderItem.getMarketOffer().getProduct();
                             row[0]=product;
-                            row[2]= product.getProductId();
-                            row[3]=product.getPrice();
-                            row[4]=product.getAvailability();                         
+                            row[1]= product.getProductId();
+                            row[2]=product.getPrice();
+                            row[3]=product.getAvailability();                         
                              dtm.addRow(row);
         
     }
@@ -140,19 +157,30 @@ public class TopProducts extends javax.swing.JPanel {
         populateTopProducts();
     }//GEN-LAST:event_marketComboActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void populateTopProducts(){
          Market market = (Market)marketCombo.getSelectedItem();
-        ArrayList<Product> productList= new ArrayList<>();
+        HashSet<Product> set= new HashSet<>();
         
                for (Order order : business.getOrderList().getOrderList()) {
                     if (order.getCustomer().getMarketName().equalsIgnoreCase(market.getMarketName())) {
                         for (OrderItem orderItem : order.getOrderItemList()) {
-                            productList.add(orderItem.getMarketOffer().getProduct());
+                            set.add(orderItem.getMarketOffer().getProduct());
                     }
                         }
                      
         }
-                
+               System.out.println("top"+set.size()+set+ market.getMarketName());
+        ArrayList<Product> productList= new ArrayList<>();
+        for (Product product : set) {
+            productList.add(product);
+        }
      
          Collections.sort(productList, new Comparator<Product>(){
    public int compare(Product p1, Product p2){
@@ -162,14 +190,14 @@ public class TopProducts extends javax.swing.JPanel {
 for (Order order : business.getOrderList().getOrderList()) {
            if(order.getCustomer().getMarketName().equals(market.getMarketName())){
                for (OrderItem orderItem : order.getOrderItemList()) {
-                   if(orderItem.getMarketOffer().getProduct().equals(p1))
-                      fRevenue += order.orderTotal();
-           fTargetRevenue += order.orderTotalTargetPrice();
+                   if(orderItem.getMarketOffer().getProduct().getProductId().equals(p1.getProductId()))
+                      fRevenue = fRevenue + order.orderTotal();
+           fTargetRevenue = fTargetRevenue +order.orderTotalTargetPrice();
                }
        
        }    
       }
-      fTotalProfit= (int)(fRevenue-fTargetRevenue);
+      fTotalProfit= (int)(fTargetRevenue-fRevenue);
        //System.out.println(o1.getName()+ototal+"array"+otarget);
     double sRevenue=0;
      double sTargetRevenue=0;
@@ -177,32 +205,34 @@ for (Order order : business.getOrderList().getOrderList()) {
        for (Order order : business.getOrderList().getOrderList()) {
            if(order.getCustomer().getMarketName().equals(market.getMarketName())){
                for (OrderItem orderItem : order.getOrderItemList()) {
-                   if(orderItem.getMarketOffer().getProduct().equals(p2))
-                      sRevenue += order.orderTotal();
-           sTargetRevenue += order.orderTotalTargetPrice();
+                   if(orderItem.getMarketOffer().getProduct().getProductId().equals(p2.getProductId()))
+                      sRevenue =  sRevenue + order.orderTotal();
+           sTargetRevenue = sTargetRevenue +order.orderTotalTargetPrice();
                }
        
        }    
       }
-      sTotalProfit= (int)(sRevenue-sTargetRevenue);  //System.out.println(o2.getName()+stotal+"array"+starget);
+      sTotalProfit= (int)(sTargetRevenue-sRevenue);  //System.out.println(o2.getName()+stotal+"array"+starget);
  
       return (fTotalProfit-sTotalProfit);
    }  
 });
          ArrayList<Product> products= new ArrayList<>();
-
+ System.out.println("list sorted"+productList.size()+productList);
    int count=0;
-        for (Product product : products) {
+        for (Product product : productList) {
             products.add(product);
             count++;
             if(count==3){
                 break;
             }
         }
+        System.out.println("last 3"+products.size()+products);
          populateTable(products);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

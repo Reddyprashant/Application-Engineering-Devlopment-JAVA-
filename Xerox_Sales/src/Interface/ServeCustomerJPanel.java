@@ -93,9 +93,11 @@ private Person person;
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Customer Name:");
 
+        customerNameTextField.setEditable(false);
         customerNameTextField.setBackground(new java.awt.Color(51, 51, 51));
         customerNameTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         customerNameTextField.setForeground(new java.awt.Color(255, 255, 255));
+        customerNameTextField.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,7 +147,7 @@ private Person person;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,14 +222,14 @@ private Person person;
 
     private void bookCustomerOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookCustomerOrderActionPerformed
        BookCustomerOrder bookCustomerOrder=new BookCustomerOrder(userProcessContainer, business, customer, person);
-       userProcessContainer.add("ManageSupplierAdministrative", bookCustomerOrder);
+       userProcessContainer.add("BookCustomerOrder", bookCustomerOrder);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_bookCustomerOrderActionPerformed
 
     private void checkOrderStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOrderStatusButtonActionPerformed
        CheckOrderStatusJPanel cosjp=new CheckOrderStatusJPanel(userProcessContainer, business, person, customer);
-       userProcessContainer.add("ManageSupplierAdministrative", cosjp);
+       userProcessContainer.add("CheckOrderStatusJPanel", cosjp);
        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_checkOrderStatusButtonActionPerformed

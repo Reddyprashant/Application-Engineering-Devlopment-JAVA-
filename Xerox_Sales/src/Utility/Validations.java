@@ -39,8 +39,7 @@ public class Validations {
 	}
   
     public static void ToInteger(KeyEvent evt)
-            
-            
+       
     {
         char c = evt.getKeyChar();
               if (!((c >= '0') && (c <= '9') ||
@@ -54,12 +53,12 @@ public class Validations {
     public static void ToAlphabet(KeyEvent evt)
     {
         char c = evt.getKeyChar();
-              if ((c >= '0') && (c <= '9'&&(c == '.') ||
+              if (!((c >= 'a') && (c <= 'z') ||
          (c == evt.VK_BACK_SPACE) ||
          (c == evt.VK_DELETE))) {
-                
-    JOptionPane.showMessageDialog(null, "Please enter an alphabet");
-    }
+       JOptionPane.showMessageDialog(null, " Please Enter alphabet");
+      
+      }
     }
 }
 

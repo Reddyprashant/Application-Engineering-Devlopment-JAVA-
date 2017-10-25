@@ -143,18 +143,14 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-        if(priceField.getText().isEmpty()||availTxt.getText().isEmpty())
-        {
-          JOptionPane.showMessageDialog(null,"enter the values");
-        }
-       else
-        {
+       
+      
             nameField.setEditable(true);
        priceField.setEditable(true);
        saveButton.setEnabled(true);
        availTxt.setEnabled(true);
-            JOptionPane.showMessageDialog(null,"Update successfull");
-        }
+            
+        
 }//GEN-LAST:event_createButtonActionPerformed
 
     private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
@@ -175,21 +171,29 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
     }
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
+         if(priceField.getText().isEmpty()||availTxt.getText().isEmpty())
+        {
+          JOptionPane.showMessageDialog(null,"enter the values");
+        }
+          else
+        {
         product.setPrice(Integer.parseInt(priceField.getText()));
         product.setProductName(nameField.getText());
         product.setAvailability(Integer.parseInt(availTxt.getText()));
+        JOptionPane.showMessageDialog(null,"Update successfull");
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
-        priceField.setText("");
+       
     }//GEN-LAST:event_priceFieldKeyPressed
 
     private void availTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availTxtKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
-        availTxt.setText("");
+        
     }//GEN-LAST:event_availTxtKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

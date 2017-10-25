@@ -64,8 +64,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         ServeCustomerButton = new javax.swing.JButton();
-        ReviewSalesOrderHistoryButton = new javax.swing.JButton();
-        ReviewSaleCommissionButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         totalOrderList = new javax.swing.JButton();
 
@@ -120,17 +118,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(ServeCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 241, -1, -1));
 
-        ReviewSalesOrderHistoryButton.setText("Review Sales Order History ");
-        ReviewSalesOrderHistoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReviewSalesOrderHistoryButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(ReviewSalesOrderHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 444, -1, -1));
-
-        ReviewSaleCommissionButton.setText("Review Sale Commission");
-        jPanel1.add(ReviewSaleCommissionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 444, -1, -1));
-
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,10 +167,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
       
     }//GEN-LAST:event_ServeCustomerButtonActionPerformed
 
-    private void ReviewSalesOrderHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReviewSalesOrderHistoryButtonActionPerformed
-       
-    }//GEN-LAST:event_ReviewSalesOrderHistoryButtonActionPerformed
-
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -200,8 +183,6 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ReviewSaleCommissionButton;
-    private javax.swing.JButton ReviewSalesOrderHistoryButton;
     private javax.swing.JButton ServeCustomerButton;
     private javax.swing.JLabel UserNameJLabel;
     private javax.swing.JTextField customerNameTextField;

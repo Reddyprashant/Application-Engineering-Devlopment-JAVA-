@@ -223,7 +223,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
         add(txtNewQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 70, -1));
 
         jLabel3.setText("Welcome To Please Buy !");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 150, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 210, 30));
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +322,7 @@ public class BookCustomerOrder extends javax.swing.JPanel {
          
          
         ViewDetailsJPanel  viewDetails= new ViewDetailsJPanel(userProcessContainer, business, product);
-        userProcessContainer.add("ManageSupplierAdministrative", viewDetails);
+        userProcessContainer.add("ViewDetailsJPanel", viewDetails);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -436,13 +436,14 @@ public void refreshOrderTable()
        {
            Order orders =business.getOrderList().addOrder();
           //orders=order;
-         person.getOrderList().add(orders);
+         
             orders.setOrderItemList(order.getOrderItemList());
           orders.setOrderDate(new Date());
           orders.setCustomer(customer);
           orders.setPerson(person);
           orders.setCommission(commission);
           orders.setStatus("Shipping");
+          person.getOrderList().add(orders);
           //orders.setOrderId(TOOL_TIP_TEXT_KEY);
           Date dt = new Date();
     Calendar c = Calendar.getInstance(); 
@@ -455,11 +456,13 @@ public void refreshOrderTable()
           
           JOptionPane.showMessageDialog(null,"order placed successfully");
         
-          refreshOrderTable();
-          populateTable();
+          
           isCheckedOut= true;
-
+          
             order = new Order();
+            commission=0;
+            refreshOrderTable();
+          //populateTable();
        }
        else
        {

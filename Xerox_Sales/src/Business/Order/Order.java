@@ -135,7 +135,7 @@ public class Order {
    {
        double totalTargetPrice =0;
        for (OrderItem orderItem : orderItemList) {
-          totalTargetPrice=+orderItem.targetPrice();
+          totalTargetPrice= totalTargetPrice+orderItem.targetPrice();
        }
        return totalTargetPrice;
    }

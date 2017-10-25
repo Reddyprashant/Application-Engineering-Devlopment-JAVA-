@@ -51,15 +51,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         availTxt = new javax.swing.JTextField();
         priceField = new javax.swing.JTextField();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Create New Product");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Product Price:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 180, 110, 30));
 
         createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         createButton.setText("Add Product");
@@ -68,7 +64,6 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
                 createButtonActionPerformed(evt);
             }
         });
-        add(createButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
         backButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backButton1.setText("<< Back");
@@ -77,11 +72,9 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
                 backButton1ActionPerformed(evt);
             }
         });
-        add(backButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Product Name:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 30));
 
         nameField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -89,25 +82,72 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
                 nameField1KeyPressed(evt);
             }
         });
-        add(nameField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Availablity :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
 
         availTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 availTxtKeyPressed(evt);
             }
         });
-        add(availTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 160, -1));
 
         priceField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 priceFieldKeyPressed(evt);
             }
         });
-        add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 160, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel5)
+                .addGap(23, 23, 23)
+                .addComponent(nameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel4)
+                .addGap(30, 30, 30)
+                .addComponent(availTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(backButton1)
+                .addGap(247, 247, 247)
+                .addComponent(createButton))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(availTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backButton1)
+                    .addComponent(createButton)))
+        );
     }// </editor-fold>//GEN-END:initComponents
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
     // TODO add your handling code here:
@@ -159,13 +199,13 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     private void nameField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameField1KeyPressed
         // TODO add your handling code here:
         Validations.ToAlphabet(evt);
-        nameField1.setText("");
+        
     }//GEN-LAST:event_nameField1KeyPressed
 
     private void priceFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyPressed
         // TODO add your handling code here:
         Validations.ToInteger(evt);
-        priceField.setText("");
+       
     }//GEN-LAST:event_priceFieldKeyPressed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
